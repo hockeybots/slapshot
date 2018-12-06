@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A javascript interface to the NHL API",
   "main": "lib/index.js",
-  "types": "dist/index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest"
   },

@@ -1,3 +1,3 @@
-class Slapshot {}
+import Teams from './api/Teams';
 
-export default Slapshot;
+export default { Teams };
