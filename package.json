@@ -1,5 +1,5 @@
 {
-  "name": "slapshot",
+  "name": "@hockeybots/slapshot",
   "version": "1.0.0",
   "description": "A javascript interface to the NHL API",
   "main": "lib/index.js",
