@@ -1,0 +1,21 @@
+{
+  "name": "slapshot",
+  "version": "1.0.0",
+  "description": "A javascript interface to the NHL API",
+  "main": "lib/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hockeybots/slapshot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hockeybots/slapshot/issues"
+  },
+  "homepage": "https://github.com/hockeybots/slapshot#readme"
+}
