@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "A javascript interface to the NHL API",
   "main": "lib/index.js",
-  "types": "dist/index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -13,9 +13,17 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/hockeybots/slapshot/issues"
   },
-  "homepage": "https://github.com/hockeybots/slapshot#readme"
+  "homepage": "https://github.com/hockeybots/slapshot#readme",
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.12",
+    "jest": "^23.6.0",
+    "nyc": "^13.1.0",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.1"
+  }
 }
