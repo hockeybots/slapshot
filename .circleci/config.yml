@@ -13,9 +13,13 @@ jobs: # a collection of steps
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-    test:
-      - run: # run tests
-          name: test
+  test: # runs not using Workflows must have a `build` job as entry point
+    working_directory: ~/slapshot # directory where steps will run
+    docker: # run the steps with Docker
+      - image: circleci/node:8.14-browsers # ...with this image as the primary container; this is where all `steps` will run
+    steps: # a collection of executable commands
+      - run:
+          name: jest
           command: yarn test
 workflows:
   version: 2
