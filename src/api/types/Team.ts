@@ -1,5 +1,6 @@
 import Conference from './Conference';
 import Division from './Division';
+import Player from './Player';
 import Venue from './Venue';
 
 export default interface Team {
@@ -11,6 +12,7 @@ export default interface Team {
   id: number;
   locationName: string;
   name: string;
+  roster?: Array<Player>;
   shortName: string;
   siteUrl: string;
   teamName: string;

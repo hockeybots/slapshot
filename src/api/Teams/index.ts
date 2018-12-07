@@ -1,12 +1,18 @@
 import { TEAMS_ENDPOINT } from '../../endpoints';
-import { Conference, Division, Team, Venue } from '../types';
+import { Conference, Division, Player, Team, Venue } from '../types';
 
 import Endpoint from '../Endpoint';
+import People from '../People';
 
 /**
  * Teams endpoint wrapper
  */
 class Teams extends Endpoint {
+  private roster: boolean = false;
+  private previousGame: boolean = false;
+  private nextGame: boolean = false;
+  private stats: boolean = false;
+
   constructor(...ids: Array<number>) {
     super();
     this.uri = `${TEAMS_ENDPOINT}?teamId=${ids.join(',')}`;
@@ -20,6 +26,7 @@ class Teams extends Endpoint {
     }
   }
   public withRoster(): this {
+    this.roster = true;
     this.uri = `${this.uri}&expand=team.roster`;
     return this;
   }
@@ -56,11 +63,13 @@ class Teams extends Endpoint {
     return {
       city: apiData.city,
       name: apiData.name,
-      timeZone: apiData.timeZone.tz,
+      timeZoneAbbreviation: apiData.timeZone.tz,
+      timeZoneName: apiData.timeZone.id,
+      utcOffset: apiData.timeZone.offset,
     };
   }
-  private toTeam(apiData: any): Team {
-    return {
+  private async toTeam(apiData: any): Promise<Team> {
+    const team: Team = {
       abbreviation: apiData.abbreviation,
       active: apiData.active,
       conference: this.toConference(apiData.conference),
@@ -74,9 +83,14 @@ class Teams extends Endpoint {
       teamName: apiData.teamName,
       venue: this.toVenue(apiData.venue),
     };
+    if (this.roster) {
+      const ids = apiData.roster.roster.map((rosterMember: any) => rosterMember.person.id);
+      team.roster = await new People(ids).data();
+    }
+    return team;
   }
   private async parseData(apiData: any): Promise<Array<Team>> {
-    return apiData.data.teams.map((team: any) => this.toTeam(team));
+    return Promise.all<Team>(apiData.data.teams.map((team: any) => this.toTeam(team)));
   }
 }
 
