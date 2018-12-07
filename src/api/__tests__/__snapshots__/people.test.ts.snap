@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Api People toPlayer should return a player object with the correct data 1`] = `
+Object {
+  "age": 22,
+  "birthDate": 1990-01-01T00:00:00.000Z,
+  "birthplace": "City of Angels, CA USA",
+  "dominantSide": "R",
+  "firstName": "Cool",
+  "fullName": "Cool Guy",
+  "height": "6' 5\\"",
+  "id": 1,
+  "isAlternateCaptain": false,
+  "isCaptain": true,
+  "isRookie": false,
+  "jerseyNumber": "99",
+  "lastName": "Guy",
+  "position": "Goalie",
+  "rosterStatus": "A",
+  "weight": 222,
+}
+`;
