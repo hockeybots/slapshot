@@ -2,7 +2,7 @@
 
 # slapshot
 
-slapshot is an NHL API library written in TypeScript
+slapshot is an NHL API library written in [TypeScript](https://github.com/Microsoft/TypeScript).
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
