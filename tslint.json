@@ -1,6 +1,9 @@
 {
   "defaultSeverity": "error",
   "extends": ["tslint:recommended"],
+  "linterOptions": {
+    "exclude": ["**/__tests__/**"]
+  },
   "jsRules": {},
   "rules": {
     "quotemark": [true, "single"],

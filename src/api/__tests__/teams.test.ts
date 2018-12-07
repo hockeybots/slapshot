@@ -52,8 +52,7 @@ describe('Api', () => {
 
         it('should return the correct uri', () => {
           expect(team.uri).toBe(
-            `https://statsapi.web.nhl.com/api/v1/teams
-            ?teamId=1&expand=team.roster&expand=team.stats&expand=team.schedule.previous&expand=team.schedule.next`,
+            `https://statsapi.web.nhl.com/api/v1/teams?teamId=1&expand=team.roster&expand=team.stats&expand=team.schedule.previous&expand=team.schedule.next`,
           );
         });
       });
