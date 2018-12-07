@@ -38,7 +38,7 @@ import slapshot from '@hockeybots/slapshot';
 const teams = await slapshot.Teams(1).data();
 const team = idx(teams, _ => _[0]);
 if(team) {
-console.log(`The ${team.teamName} first appeared in ${team.firstYearOfPlay}`);
+  console.log(`The ${team.teamName} first appeared in ${team.firstYearOfPlay}`);
 }
 ```
 
@@ -55,15 +55,15 @@ import slapshot from '@hockeybots/slapshot';
 * returning an array of Team objects
 */
 slapshot
-.Teams(1)
-.data()
-.then((teams) => {
-const team = idx(teams, _ => _[0]);
-if(team) {
-console.log(`The ${team.teamName} first appeared in ${team.firstYearOfPlay}`);
-}
-})
-.catch(console.error);
+  .Teams(1)
+  .data()
+  .then((teams) => {
+    const team = idx(teams, _ => _[0]);
+    if(team) {
+      console.log(`The ${team.teamName} first appeared in ${team.firstYearOfPlay}`);
+    }
+  })
+  .catch(console.error);
 ```
 
 Fetch multiple teams
@@ -79,7 +79,7 @@ import slapshot from '@hockeybots/slapshot';
 */
 const teams = await slapshot.Teams(1,2,3,4).data();
 teams.forEach(team =>
-console.log(`The ${team.teamName} first appeared in ${team.firstYearOfPlay}`)
+  console.log(`The ${team.teamName} first appeared in ${team.firstYearOfPlay}`)
 );
 ```
 
