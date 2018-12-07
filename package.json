@@ -6,7 +6,6 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest",
-    "precommit": "lint-staged",
     "build:doc": "jsdoc2md --files 'src/**/*.ts' --configure jsdoc2md.json --template README.hbs > README.md && doctoc README.md"
   },
   "repository": {
@@ -44,7 +43,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && yarn build:doc"
     }
   },
   "lint-staged": {
