@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Api Teams toTeam should return a team object with the correct data 1`] = `
+Object {
+  "abbreviation": "RZR",
+  "active": true,
+  "conference": Object {
+    "name": "Wild West",
+  },
+  "division": Object {
+    "abbreviation": "GB",
+    "name": "Gummy Bears",
+  },
+  "firstYearOfPlay": 1999,
+  "id": 80085,
+  "locationName": "Battle Dome Zone",
+  "name": "Wreck City Razors",
+  "shortName": "Razors",
+  "siteUrl": "https://getwrecked.co.jp",
+  "teamName": "Razors",
+  "venue": Object {
+    "city": "Tokyooo",
+    "name": "Battle Dome",
+    "timeZoneAbbreviation": "TST",
+    "timeZoneName": "Tokyo Battle Time",
+    "utcOffset": 666,
+  },
+}
+`;

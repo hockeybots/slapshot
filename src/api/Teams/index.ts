@@ -8,6 +8,48 @@ import People from '../People';
  * Teams endpoint wrapper
  */
 class Teams extends Endpoint {
+  public static toConference(apiData: any): Conference {
+    return {
+      name: apiData.name,
+    };
+  }
+  public static toDivision(apiData: any): Division {
+    return {
+      abbreviation: apiData.abbreviation,
+      name: apiData.name,
+    };
+  }
+  public static toVenue(apiData: any): Venue {
+    return {
+      city: apiData.city,
+      name: apiData.name,
+      timeZoneAbbreviation: apiData.timeZone.tz,
+      timeZoneName: apiData.timeZone.id,
+      utcOffset: apiData.timeZone.offset,
+    };
+  }
+  public static async toTeam(apiData: any, roster: boolean): Promise<Team> {
+    const team: Team = {
+      abbreviation: apiData.abbreviation,
+      active: apiData.active,
+      conference: Teams.toConference(apiData.conference),
+      division: Teams.toDivision(apiData.division),
+      firstYearOfPlay: apiData.firstYearOfPlay,
+      id: apiData.id,
+      locationName: apiData.locationName,
+      name: apiData.name,
+      shortName: apiData.shortName,
+      siteUrl: apiData.officialSiteUrl,
+      teamName: apiData.teamName,
+      venue: Teams.toVenue(apiData.venue),
+    };
+    if (roster) {
+      const ids = apiData.roster.roster.map((rosterMember: any) => rosterMember.person.id);
+      team.roster = await new People(ids).data();
+    }
+    return team;
+  }
+
   private roster: boolean = false;
   private previousGame: boolean = false;
   private nextGame: boolean = false;
@@ -48,49 +90,11 @@ class Teams extends Endpoint {
       .withPreviousGame()
       .withNextGame();
   }
-  private toConference(apiData: any): Conference {
-    return {
-      name: apiData.name,
-    };
-  }
-  private toDivision(apiData: any): Division {
-    return {
-      abbreviation: apiData.abbreviation,
-      name: apiData.name,
-    };
-  }
-  private toVenue(apiData: any): Venue {
-    return {
-      city: apiData.city,
-      name: apiData.name,
-      timeZoneAbbreviation: apiData.timeZone.tz,
-      timeZoneName: apiData.timeZone.id,
-      utcOffset: apiData.timeZone.offset,
-    };
-  }
-  private async toTeam(apiData: any): Promise<Team> {
-    const team: Team = {
-      abbreviation: apiData.abbreviation,
-      active: apiData.active,
-      conference: this.toConference(apiData.conference),
-      division: this.toDivision(apiData.division),
-      firstYearOfPlay: apiData.firstYearOfPlay,
-      id: apiData.id,
-      locationName: apiData.locationName,
-      name: apiData.name,
-      shortName: apiData.shortName,
-      siteUrl: apiData.officialSiteUrl,
-      teamName: apiData.teamName,
-      venue: this.toVenue(apiData.venue),
-    };
-    if (this.roster) {
-      const ids = apiData.roster.roster.map((rosterMember: any) => rosterMember.person.id);
-      team.roster = await new People(ids).data();
+  public async parseData(apiData: any): Promise<Array<Team>> {
+    if (!apiData) {
+      return Promise.reject('Unable to parse, missing data');
     }
-    return team;
-  }
-  private async parseData(apiData: any): Promise<Array<Team>> {
-    return Promise.all<Team>(apiData.data.teams.map((team: any) => this.toTeam(team)));
+    return Promise.all<Team>(apiData.data.teams.map((team: any) => Teams.toTeam(team, this.roster)));
   }
 }
 
