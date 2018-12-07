@@ -28,9 +28,17 @@ class People extends Endpoint {
     };
     return player;
   }
+
+  private playerIds: Array<number>;
   constructor(...ids: Array<number>) {
     super();
-    this.uri = `${PEOPLE_ENDPOINT}?personIds=${ids.join(',')}`;
+    this.playerIds = ids;
+  }
+  public clear() {
+    this.initUri();
+  }
+  public initUri() {
+    this.uri = `${PEOPLE_ENDPOINT}?personIds=${this.playerIds.join(',')}`;
   }
   public async data(): Promise<Array<Player>> {
     try {

@@ -3,6 +3,12 @@ import Division from './Division';
 import Player from './Player';
 import Venue from './Venue';
 
+/**
+ * A representation of an NHL Team.
+ * @interface
+ * @property {string} abbreviation - The teams name in abbpreviated form.
+ * @property {boolean} active - Indicates whether the team is currently active in the NHL.
+ */
 export default interface Team {
   abbreviation: string;
   active: boolean;

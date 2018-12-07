@@ -1,7 +1,11 @@
 import axios from 'axios';
 import validator from 'validator';
 
-class Endpoint {
+/**
+ * The Endpoint abstract class
+ * All endpoints, for example {Team} extend Endpoint
+ */
+abstract class Endpoint {
   public uri: string = '';
   public async load(): Promise<any> {
     if (validator.isURL(this.uri)) {
@@ -9,6 +13,12 @@ class Endpoint {
     }
     return Promise.reject('Cannot load data from an invalid endpoint');
   }
+  /**
+   *
+   * @abstract
+   */
+  public abstract clear(): void;
+  public abstract initUri(): void;
 }
 
 export default Endpoint;

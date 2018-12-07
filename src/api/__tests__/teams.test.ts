@@ -23,12 +23,30 @@ describe('Api', () => {
         describe('withRoster', () => {
           const team = new Teams(1).withRoster();
 
+          // Assure no duplication
+          team
+            .withRoster()
+            .withRoster()
+            .withRoster()
+            .withRoster()
+            .withRoster()
+            .withRoster();
+
           it('should return the correct uri', () => {
             expect(team.uri).toBe('https://statsapi.web.nhl.com/api/v1/teams?teamId=1&expand=team.roster');
           });
         });
         describe('withPreviousGame', () => {
           const team = new Teams(1).withPreviousGame();
+
+          // Assure no duplication
+          team
+            .withPreviousGame()
+            .withPreviousGame()
+            .withPreviousGame()
+            .withPreviousGame()
+            .withPreviousGame()
+            .withPreviousGame();
 
           it('should return the correct uri', () => {
             expect(team.uri).toBe('https://statsapi.web.nhl.com/api/v1/teams?teamId=1&expand=team.schedule.previous');
@@ -37,12 +55,30 @@ describe('Api', () => {
         describe('withNextGame', () => {
           const team = new Teams(1).withNextGame();
 
+          // Assure no duplication
+          team
+            .withNextGame()
+            .withNextGame()
+            .withNextGame()
+            .withNextGame()
+            .withNextGame()
+            .withNextGame();
+
           it('should return the correct uri', () => {
             expect(team.uri).toBe('https://statsapi.web.nhl.com/api/v1/teams?teamId=1&expand=team.schedule.next');
           });
         });
         describe('withStats', () => {
           const team = new Teams(1).withStats();
+
+          // Assure no duplication
+          team
+            .withStats()
+            .withStats()
+            .withStats()
+            .withStats()
+            .withStats()
+            .withStats();
 
           it('should return the correct uri', () => {
             expect(team.uri).toBe('https://statsapi.web.nhl.com/api/v1/teams?teamId=1&expand=team.stats');
@@ -51,10 +87,37 @@ describe('Api', () => {
         describe('all', () => {
           const team = new Teams(1).all();
 
+          // Assure no duplication
+          team
+            .all()
+            .all()
+            .all()
+            .all()
+            .all()
+            .all();
+
           it('should return the correct uri', () => {
             expect(team.uri).toBe(
               `https://statsapi.web.nhl.com/api/v1/teams?teamId=1&expand=team.roster&expand=team.stats&expand=team.schedule.previous&expand=team.schedule.next`,
             );
+          });
+        });
+        describe('clear', () => {
+          const team = new Teams(1).all();
+
+          // Assure no duplication
+          team
+            .all()
+            .all()
+            .all()
+            .all()
+            .all()
+            .all();
+
+          team.clear();
+
+          it('should return the correct uri', () => {
+            expect(team.uri).toBe(`https://statsapi.web.nhl.com/api/v1/teams?teamId=1`);
           });
         });
       });

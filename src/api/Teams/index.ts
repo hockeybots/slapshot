@@ -1,5 +1,5 @@
 import { TEAMS_ENDPOINT } from '../../endpoints';
-import { Conference, Division, Player, Team, Venue } from '../types';
+import { Conference, Division, Game, Team, Venue } from '../types';
 
 import Endpoint from '../Endpoint';
 import People from '../People';
@@ -8,6 +8,11 @@ import People from '../People';
  * Teams endpoint wrapper
  */
 class Teams extends Endpoint {
+  /**
+   * This method will transform API data in to a Conference object.
+   * @param apiData {object} - The conference object of the response from the NHL API
+   * @returns Conference
+   */
   public static toConference(apiData: any): Conference {
     return {
       name: apiData.name,
@@ -55,10 +60,20 @@ class Teams extends Endpoint {
   private nextGame: boolean = false;
   private stats: boolean = false;
 
+  private teamIds: Array<number>;
   constructor(...ids: Array<number>) {
     super();
-    this.uri = `${TEAMS_ENDPOINT}?teamId=${ids.join(',')}`;
+    this.teamIds = ids;
+    this.initUri();
   }
+
+  public clear() {
+    this.initUri();
+  }
+  public initUri() {
+    this.uri = `${TEAMS_ENDPOINT}?teamId=${this.teamIds.join(',')}`;
+  }
+
   public async data(): Promise<Array<Team>> {
     try {
       const apiData = await this.load();
@@ -67,21 +82,35 @@ class Teams extends Endpoint {
       return Promise.reject(error.message);
     }
   }
+  /**
+   * Fluen API methods
+   */
   public withRoster(): this {
-    this.roster = true;
-    this.uri = `${this.uri}&expand=team.roster`;
+    if (!this.roster) {
+      this.roster = true;
+      this.uri = `${this.uri}&expand=team.roster`;
+    }
     return this;
   }
   public withPreviousGame(): this {
-    this.uri = `${this.uri}&expand=team.schedule.previous`;
+    if (!this.previousGame) {
+      this.previousGame = true;
+      this.uri = `${this.uri}&expand=team.schedule.previous`;
+    }
     return this;
   }
   public withNextGame(): this {
-    this.uri = `${this.uri}&expand=team.schedule.next`;
+    if (!this.nextGame) {
+      this.nextGame = true;
+      this.uri = `${this.uri}&expand=team.schedule.next`;
+    }
     return this;
   }
   public withStats(): this {
-    this.uri = `${this.uri}&expand=team.stats`;
+    if (!this.stats) {
+      this.stats = true;
+      this.uri = `${this.uri}&expand=team.stats`;
+    }
     return this;
   }
   public all(): this {
