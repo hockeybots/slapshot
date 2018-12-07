@@ -70,13 +70,13 @@ class Teams extends Endpoint {
       locationName: apiData.locationName,
       name: apiData.name,
       shortName: apiData.shortName,
-      siteUrl: apiData.siteUrl,
+      siteUrl: apiData.officialSiteUrl,
       teamName: apiData.teamName,
       venue: this.toVenue(apiData.venue),
     };
   }
-  private async parseData(apiData: Array<any>): Promise<Array<Team>> {
-    return apiData.map(this.toTeam);
+  private async parseData(apiData: any): Promise<Array<Team>> {
+    return apiData.data.teams.map((team: any) => this.toTeam(team));
   }
 }
 
