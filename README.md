@@ -1,6 +1,6 @@
 # slapshot
 
-A javascript interface to the NHL API
+slapshot is an NHL API library written in TypeScript.
 
 ## Installation
 
