@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,8 @@
     }
   },
   "lint-staged": {
-    "*.{ts,js,json,css,md}": [
+    "*.{ts}": [
+      "tslint",
       "prettier --write",
       "git add"
     ]
