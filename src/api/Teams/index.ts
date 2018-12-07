@@ -1,38 +1,41 @@
 import { TEAMS_ENDPOINT } from '../../endpoints';
 
+/**
+ * Teams endpoint wrapper
+ */
 interface Team {
   id: number;
 }
 class Teams {
-  uri: string;
+  public uri: string;
   constructor(...ids: Array<number>) {
     this.uri = `${TEAMS_ENDPOINT}?teamId=${ids.join(',')}`;
   }
-  withRoster(): this {
+  public withRoster(): this {
     this.uri = `${this.uri}&expand=team.roster`;
     return this;
   }
-  withPreviousGame(): this {
+  public withPreviousGame(): this {
     this.uri = `${this.uri}&expand=team.schedule.previous`;
     return this;
   }
-  withNextGame(): this {
+  public withNextGame(): this {
     this.uri = `${this.uri}&expand=team.schedule.next`;
     return this;
   }
-  withStats(): this {
+  public withStats(): this {
     this.uri = `${this.uri}&expand=team.stats`;
     return this;
   }
-  all(): this {
+  public all(): this {
     return this.withRoster()
       .withStats()
       .withPreviousGame()
       .withNextGame();
   }
-  fetch(): Team {
+  public fetch(): Team {
     return {
-      id: 0
+      id: 0,
     };
   }
 }
