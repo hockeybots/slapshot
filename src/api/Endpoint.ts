@@ -2,10 +2,15 @@ import axios from 'axios';
 import validator from 'validator';
 
 /**
- * The Endpoint abstract class
- * All endpoints, for example {Team} extend Endpoint
+ * @abstract
+ * @class Endpoint
+ * @description The Endpoint abstract class<br />
+ * All endpoints, for example {Teams} extend Endpoint
  */
 abstract class Endpoint {
+  /**
+   * @property {string} The URI of the endpoint
+   */
   public uri: string = '';
   public async load(): Promise<any> {
     if (validator.isURL(this.uri)) {

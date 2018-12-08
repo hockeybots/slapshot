@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "idx": "^2.5.2",
     "validator": "^10.9.0"
   }
 }
