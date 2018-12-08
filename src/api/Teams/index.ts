@@ -80,6 +80,10 @@ class Teams extends Endpoint {
   private stats: boolean = false;
 
   private teamIds: Array<number>;
+  /**
+   * @constructor
+   * @param ids Target team id's
+   */
   constructor(...ids: Array<number>) {
     super();
     this.teamIds = ids;
@@ -157,7 +161,7 @@ class Teams extends Endpoint {
   }
   /**
    * @description This method will add all possible query strings to the URI.
-   * @returns Teams
+   * @returns {Teams}
    */
   public all(): this {
     return this.withRoster()

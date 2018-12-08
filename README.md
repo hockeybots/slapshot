@@ -23,13 +23,13 @@ slapshot is an NHL API library written in [TypeScript](https://github.com/Micros
     - [people.parseData(apiData) ⇒ <code>Array.&lt;Player&gt;</code>](#peopleparsedataapidata-%E2%87%92-codearrayltplayergtcode)
     - [People.toPlayer(apiData) ⇒ <code>Player</code>](#peopletoplayerapidata-%E2%87%92-codeplayercode)
   - [Teams ⇐ <code>Endpoint</code>](#teams-%E2%87%90-codeendpointcode)
-    - [new Teams()](#new-teams)
+    - [new Teams(...ids)](#new-teamsids)
     - [teams.data() ⇒ <code>Array.&lt;Teams&gt;</code>](#teamsdata-%E2%87%92-codearrayltteamsgtcode)
     - [teams.withRoster() ⇒ <code>Teams</code>](#teamswithroster-%E2%87%92-codeteamscode)
     - [teams.withPreviousGame() ⇒ <code>Teams</code>](#teamswithpreviousgame-%E2%87%92-codeteamscode)
     - [teams.withNextGame() ⇒ <code>Teams</code>](#teamswithnextgame-%E2%87%92-codeteamscode)
     - [teams.withStats() ⇒ <code>Teams</code>](#teamswithstats-%E2%87%92-codeteamscode)
-    - [teams.all() ⇒](#teamsall-%E2%87%92)
+    - [teams.all() ⇒ <code>Teams</code>](#teamsall-%E2%87%92-codeteamscode)
     - [teams.parseData(apiData) ⇒ <code>Array.&lt;Team&gt;</code>](#teamsparsedataapidata-%E2%87%92-codearrayltteamgtcode)
     - [Teams.toConference(apiData) ⇒ <code>Conference</code>](#teamstoconferenceapidata-%E2%87%92-codeconferencecode)
     - [Teams.toDivision(apiData) ⇒ <code>Division</code>](#teamstodivisionapidata-%E2%87%92-codedivisioncode)
@@ -323,14 +323,14 @@ All endpoints, for example {Teams} extend Endpoint</p>
 **Extends**: [<code>Endpoint</code>](#Endpoint)  
 
 * [Teams](#Teams) ⇐ [<code>Endpoint</code>](#Endpoint)
-    * [new Teams()](#new_Teams_new)
+    * [new Teams(...ids)](#new_Teams_new)
     * _instance_
         * [.data()](#Teams+data) ⇒ [<code>Array.&lt;Teams&gt;</code>](#Teams)
         * [.withRoster()](#Teams+withRoster) ⇒ [<code>Teams</code>](#Teams)
         * [.withPreviousGame()](#Teams+withPreviousGame) ⇒ [<code>Teams</code>](#Teams)
         * [.withNextGame()](#Teams+withNextGame) ⇒ [<code>Teams</code>](#Teams)
         * [.withStats()](#Teams+withStats) ⇒ [<code>Teams</code>](#Teams)
-        * [.all()](#Teams+all) ⇒
+        * [.all()](#Teams+all) ⇒ [<code>Teams</code>](#Teams)
         * [.parseData(apiData)](#Teams+parseData) ⇒ [<code>Array.&lt;Team&gt;</code>](#Team)
     * _static_
         * [.toConference(apiData)](#Teams.toConference) ⇒ [<code>Conference</code>](#Conference)
@@ -340,8 +340,13 @@ All endpoints, for example {Teams} extend Endpoint</p>
 
 <a name="new_Teams_new"></a>
 
-### new Teams()
+### new Teams(...ids)
 <p>An abstraction of the {TEAMS_ENDPOINT} with a fluent API</p>
+
+
+| Param | Description |
+| --- | --- |
+| ...ids | <p>Target team id's</p> |
 
 <a name="Teams+data"></a>
 
@@ -380,11 +385,10 @@ statistical data.</p>
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
 <a name="Teams+all"></a>
 
-### teams.all() ⇒
+### teams.all() ⇒ [<code>Teams</code>](#Teams)
 <p>This method will add all possible query strings to the URI.</p>
 
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Teams</p>  
 <a name="Teams+parseData"></a>
 
 ### teams.parseData(apiData) ⇒ [<code>Array.&lt;Team&gt;</code>](#Team)
