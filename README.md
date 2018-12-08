@@ -19,7 +19,7 @@ slapshot is an NHL API library written in [TypeScript](https://github.com/Micros
     - [*new Endpoint()*](#new-endpoint)
   - [People ⇐ <code>Endpoint</code>](#people-%E2%87%90-codeendpointcode)
     - [new People()](#new-people)
-    - [people.data() ⇒](#peopledata-%E2%87%92)
+    - [people.data() ⇒ <code>Array.&lt;Player&gt;</code>](#peopledata-%E2%87%92-codearrayltplayergtcode)
     - [people.parseData(apiData) ⇒ <code>Array.&lt;Player&gt;</code>](#peopleparsedataapidata-%E2%87%92-codearrayltplayergtcode)
     - [People.toPlayer(apiData) ⇒ <code>Player</code>](#peopletoplayerapidata-%E2%87%92-codeplayercode)
   - [Teams ⇐ <code>Endpoint</code>](#teams-%E2%87%90-codeendpointcode)
@@ -69,7 +69,11 @@ slapshot is an NHL API library written in [TypeScript](https://github.com/Micros
   - [TROPHY\_RECORDS\_ENDPOINT : <code>string</code>](#trophy%5C_records%5C_endpoint--codestringcode)
   - [genEndpoint](#genendpoint)
   - [Conference : <code>object</code>](#conference--codeobjectcode)
+  - [Division : <code>object</code>](#division--codeobjectcode)
+  - [Game : <code>object</code>](#game--codeobjectcode)
+  - [Player : <code>object</code>](#player--codeobjectcode)
   - [Team : <code>object</code>](#team--codeobjectcode)
+  - [Venue : <code>object</code>](#venue--codeobjectcode)
   - [STATS\_API\_ENDPOINT : <code>string</code>](#stats%5C_api%5C_endpoint--codestringcode)
   - [RECORDS\_API\_ENDPOINT : <code>string</code>](#records%5C_api%5C_endpoint--codestringcode)
 
@@ -246,8 +250,16 @@ Composes BASE_ENDPOINT with the target path to create a valid endpoint(base, pat
 <dl>
 <dt><a href="#Conference">Conference</a> : <code>object</code></dt>
 <dd><p>A representation of an NHL Conference.</p></dd>
+<dt><a href="#Division">Division</a> : <code>object</code></dt>
+<dd><p>A representation of an NHL Division.</p></dd>
+<dt><a href="#Game">Game</a> : <code>object</code></dt>
+<dd><p>A representation of an NHL Game.</p></dd>
+<dt><a href="#Player">Player</a> : <code>object</code></dt>
+<dd><p>A representation of an NHL Player.</p></dd>
 <dt><a href="#Team">Team</a> : <code>object</code></dt>
 <dd><p>A representation of an NHL Team.</p></dd>
+<dt><a href="#Venue">Venue</a> : <code>object</code></dt>
+<dd><p>A representation of an NHL Venue.</p></dd>
 <dt><a href="#STATS_API_ENDPOINT">STATS_API_ENDPOINT</a> : <code>string</code></dt>
 <dd><p>Base endpoint of the NHL Stats API</p></dd>
 <dt><a href="#RECORDS_API_ENDPOINT">RECORDS_API_ENDPOINT</a> : <code>string</code></dt>
@@ -275,10 +287,10 @@ All endpoints, for example {Teams} extend Endpoint</p>
 * [People](#People) ⇐ [<code>Endpoint</code>](#Endpoint)
     * [new People()](#new_People_new)
     * _instance_
-        * [.data()](#People+data) ⇒
-        * [.parseData(apiData)](#People+parseData) ⇒ <code>Array.&lt;Player&gt;</code>
+        * [.data()](#People+data) ⇒ [<code>Array.&lt;Player&gt;</code>](#Player)
+        * [.parseData(apiData)](#People+parseData) ⇒ [<code>Array.&lt;Player&gt;</code>](#Player)
     * _static_
-        * [.toPlayer(apiData)](#People.toPlayer) ⇒ <code>Player</code>
+        * [.toPlayer(apiData)](#People.toPlayer) ⇒ [<code>Player</code>](#Player)
 
 <a name="new_People_new"></a>
 
@@ -287,14 +299,13 @@ All endpoints, for example {Teams} extend Endpoint</p>
 
 <a name="People+data"></a>
 
-### people.data() ⇒
+### people.data() ⇒ [<code>Array.&lt;Player&gt;</code>](#Player)
 <p>This method is used after building of the URI is complete. It will fetch and parse the NHL API data.</p>
 
 **Kind**: instance method of [<code>People</code>](#People)  
-**Returns**: <p>Player[]</p>  
 <a name="People+parseData"></a>
 
-### people.parseData(apiData) ⇒ <code>Array.&lt;Player&gt;</code>
+### people.parseData(apiData) ⇒ [<code>Array.&lt;Player&gt;</code>](#Player)
 <p>This method will parse the raw NHL API data in to an array of Player objects.</p>
 
 **Kind**: instance method of [<code>People</code>](#People)  
@@ -305,7 +316,7 @@ All endpoints, for example {Teams} extend Endpoint</p>
 
 <a name="People.toPlayer"></a>
 
-### People.toPlayer(apiData) ⇒ <code>Player</code>
+### People.toPlayer(apiData) ⇒ [<code>Player</code>](#Player)
 <p>This method will transform API data in to a Player object.</p>
 
 **Kind**: static method of [<code>People</code>](#People)  
@@ -334,8 +345,8 @@ All endpoints, for example {Teams} extend Endpoint</p>
         * [.parseData(apiData)](#Teams+parseData) ⇒ [<code>Array.&lt;Team&gt;</code>](#Team)
     * _static_
         * [.toConference(apiData)](#Teams.toConference) ⇒ [<code>Conference</code>](#Conference)
-        * [.toDivision(apiData)](#Teams.toDivision) ⇒ <code>Division</code>
-        * [.toVenue(apiData)](#Teams.toVenue) ⇒ <code>Venue</code>
+        * [.toDivision(apiData)](#Teams.toDivision) ⇒ [<code>Division</code>](#Division)
+        * [.toVenue(apiData)](#Teams.toVenue) ⇒ [<code>Venue</code>](#Venue)
         * [.toTeam(apiData)](#Teams.toTeam) ⇒ [<code>Team</code>](#Team)
 
 <a name="new_Teams_new"></a>
@@ -413,7 +424,7 @@ statistical data.</p>
 
 <a name="Teams.toDivision"></a>
 
-### Teams.toDivision(apiData) ⇒ <code>Division</code>
+### Teams.toDivision(apiData) ⇒ [<code>Division</code>](#Division)
 <p>This method will transform API data in to a Division object.</p>
 
 **Kind**: static method of [<code>Teams</code>](#Teams)  
@@ -424,7 +435,7 @@ statistical data.</p>
 
 <a name="Teams.toVenue"></a>
 
-### Teams.toVenue(apiData) ⇒ <code>Venue</code>
+### Teams.toVenue(apiData) ⇒ [<code>Venue</code>](#Venue)
 <p>This method will transform API data in to a Venue object.</p>
 
 **Kind**: static method of [<code>Teams</code>](#Teams)  
@@ -661,6 +672,43 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 | --- | --- | --- |
 | name | <code>string</code> | <p>The name of the conference.</p> |
 
+<a name="Division"></a>
+
+## Division : <code>object</code>
+<p>A representation of an NHL Division.</p>
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| abbreviation | <code>string</code> | <p>The divisions abbreviated name</p> |
+| name | <code>string</code> | <p>The name of the division.</p> |
+
+<a name="Game"></a>
+
+## Game : <code>object</code>
+<p>A representation of an NHL Game.</p>
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | <p>The ID of the game.</p> |
+
+<a name="Player"></a>
+
+## Player : <code>object</code>
+<p>A representation of an NHL Player.</p>
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| fullName | <code>string</code> | <p>The full name of the player.</p> |
+
 <a name="Team"></a>
 
 ## Team : <code>object</code>
@@ -673,6 +721,18 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 | --- | --- | --- |
 | abbreviation | <code>string</code> | <p>The teams name in abbpreviated form.</p> |
 | active | <code>boolean</code> | <p>Indicates whether the team is currently active in the NHL.</p> |
+
+<a name="Venue"></a>
+
+## Venue : <code>object</code>
+<p>A representation of an NHL Venue.</p>
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | <p>The name of the venue.</p> |
 
 <a name="STATS_API_ENDPOINT"></a>
 

@@ -51,7 +51,7 @@ class People extends Endpoint {
   }
   /**
    * @description This method is used after building of the URI is complete. It will fetch and parse the NHL API data.
-   * @returns Player[]
+   * @returns {Player[]}
    */
   public async data(): Promise<Array<Player>> {
     try {

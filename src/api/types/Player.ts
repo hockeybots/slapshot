@@ -1,4 +1,9 @@
-export default interface Player {
+/**
+ * @typedef {object} Player
+ * @property {string} fullName The full name of the player.
+ * @description A representation of an NHL Player.
+ */
+interface Player {
   age: number;
   birthDate: Date;
   birthplace: string;
@@ -16,3 +21,5 @@ export default interface Player {
   rosterStatus: string;
   weight: number;
 }
+
+export default Player;
