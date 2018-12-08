@@ -82,7 +82,7 @@ class Teams extends Endpoint {
   private teamIds: Array<number>;
   /**
    * @constructor
-   * @param ids Target team id's
+   * @param {number[]} ids Target team id's
    */
   constructor(...ids: Array<number>) {
     super();

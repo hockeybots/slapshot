@@ -344,9 +344,9 @@ All endpoints, for example {Teams} extend Endpoint</p>
 <p>An abstraction of the {TEAMS_ENDPOINT} with a fluent API</p>
 
 
-| Param | Description |
-| --- | --- |
-| ...ids | <p>Target team id's</p> |
+| Param | Type | Description |
+| --- | --- | --- |
+| ...ids | <code>Array.&lt;number&gt;</code> | <p>Target team id's</p> |
 
 <a name="Teams+data"></a>
 
