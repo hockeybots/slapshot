@@ -197,7 +197,7 @@ describe('Api', () => {
         },
       };
       it('should return a team object with the correct data', async () => {
-        const team = await Teams.toTeam(mockApiData, false);
+        const team = await Teams.toTeam(mockApiData, false, false, false, false);
         expect(team).toMatchSnapshot();
       });
     });

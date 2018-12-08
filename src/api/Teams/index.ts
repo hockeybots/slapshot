@@ -50,9 +50,19 @@ class Teams extends Endpoint {
   /**
    * This method will transform API data in to a Team object.
    * @param apiData {object} - The Team object of the response from the NHL API
+   * @param roster {boolean} - Used to determine whether or not to parse roster data
+   * @param previousGame {boolean} - Used to determine whether or not to parse previous game data
+   * @param nextGame {boolean} - Used to determine whether or not to parse next game data
+   * @param stats {boolean} - Used to determine whether or not to parse stats data
    * @returns {Team}
    */
-  public static async toTeam(apiData: any, roster: boolean): Promise<Team> {
+  public static async toTeam(
+    apiData: any,
+    roster: boolean,
+    previousGame: boolean,
+    nextGame: boolean,
+    stats: boolean,
+  ): Promise<Team> {
     const team: Team = {
       abbreviation: apiData.abbreviation,
       active: apiData.active,
@@ -68,8 +78,13 @@ class Teams extends Endpoint {
       venue: Teams.toVenue(apiData.venue),
     };
     if (roster) {
-      const ids = apiData.roster.roster.map((rosterMember: any) => rosterMember.person.id);
-      team.roster = await new People(ids).data();
+      const rosterIds = idx(apiData, (_) => _.roster.roster.map((rosterMember: any) => rosterMember.person.id));
+      if (rosterIds && Array.isArray(rosterIds)) {
+        team.roster = await new People(...rosterIds).data();
+      }
+    }
+    if (previousGame) {
+      const rosterIds = idx(apiData, (_) => _.roster.roster.map((rosterMember: any) => rosterMember.person.id));
     }
     return team;
   }
@@ -106,7 +121,7 @@ class Teams extends Endpoint {
       const apiData = await this.load();
       return this.parseData(apiData);
     } catch (error) {
-      return Promise.reject(error.message);
+      return Promise.reject(error);
     }
   }
 
@@ -175,11 +190,13 @@ class Teams extends Endpoint {
    * @returns {Team[]}
    */
   public async parseData(apiData: any): Promise<Array<Team>> {
-    const teams = idx(apiData, (_) => _.data.teams);
+    const teams = idx(apiData, (_) => _.teams);
     if (!teams || !Array.isArray(teams)) {
       return Promise.reject('Unable to parse, missing data');
     }
-    return Promise.all<Team>(teams.map((team: any) => Teams.toTeam(team, this.roster)));
+    return Promise.all<Team>(
+      teams.map((team: any) => Teams.toTeam(team, this.roster, this.previousGame, this.nextGame, this.stats)),
+    );
   }
 }
 

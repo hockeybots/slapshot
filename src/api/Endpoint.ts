@@ -14,9 +14,10 @@ abstract class Endpoint {
   public uri: string = '';
   public async load(): Promise<any> {
     if (validator.isURL(this.uri)) {
-      return axios.get(this.uri);
+      const apiResponse = await axios.get(this.uri);
+      return apiResponse.data;
     }
-    return Promise.reject('Cannot load data from an invalid endpoint');
+    return Promise.reject(`Cannot load data from an invalid endpoint ${this.uri}`);
   }
   /**
    *

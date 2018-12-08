@@ -34,7 +34,7 @@ slapshot is an NHL API library written in [TypeScript](https://github.com/Micros
     - [Teams.toConference(apiData) ⇒ <code>Conference</code>](#teamstoconferenceapidata-%E2%87%92-codeconferencecode)
     - [Teams.toDivision(apiData) ⇒ <code>Division</code>](#teamstodivisionapidata-%E2%87%92-codedivisioncode)
     - [Teams.toVenue(apiData) ⇒ <code>Venue</code>](#teamstovenueapidata-%E2%87%92-codevenuecode)
-    - [Teams.toTeam(apiData) ⇒ <code>Team</code>](#teamstoteamapidata-%E2%87%92-codeteamcode)
+    - [Teams.toTeam(apiData, roster, previousGame, nextGame, stats) ⇒ <code>Team</code>](#teamstoteamapidata-roster-previousgame-nextgame-stats-%E2%87%92-codeteamcode)
   - [AWARDS\_ENDPOINT : <code>string</code>](#awards%5C_endpoint--codestringcode)
   - [CONFERENCES\_ENDPOINT : <code>string</code>](#conferences%5C_endpoint--codestringcode)
   - [DIVISIONS\_ENDPOINT : <code>string</code>](#divisions%5C_endpoint--codestringcode)
@@ -347,7 +347,7 @@ All endpoints, for example {Teams} extend Endpoint</p>
         * [.toConference(apiData)](#Teams.toConference) ⇒ [<code>Conference</code>](#Conference)
         * [.toDivision(apiData)](#Teams.toDivision) ⇒ [<code>Division</code>](#Division)
         * [.toVenue(apiData)](#Teams.toVenue) ⇒ [<code>Venue</code>](#Venue)
-        * [.toTeam(apiData)](#Teams.toTeam) ⇒ [<code>Team</code>](#Team)
+        * [.toTeam(apiData, roster, previousGame, nextGame, stats)](#Teams.toTeam) ⇒ [<code>Team</code>](#Team)
 
 <a name="new_Teams_new"></a>
 
@@ -446,7 +446,7 @@ statistical data.</p>
 
 <a name="Teams.toTeam"></a>
 
-### Teams.toTeam(apiData) ⇒ [<code>Team</code>](#Team)
+### Teams.toTeam(apiData, roster, previousGame, nextGame, stats) ⇒ [<code>Team</code>](#Team)
 <p>This method will transform API data in to a Team object.</p>
 
 **Kind**: static method of [<code>Teams</code>](#Teams)  
@@ -454,6 +454,10 @@ statistical data.</p>
 | Param | Type | Description |
 | --- | --- | --- |
 | apiData | <code>object</code> | <p>The Team object of the response from the NHL API</p> |
+| roster | <code>boolean</code> | <p>Used to determine whether or not to parse roster data</p> |
+| previousGame | <code>boolean</code> | <p>Used to determine whether or not to parse previous game data</p> |
+| nextGame | <code>boolean</code> | <p>Used to determine whether or not to parse next game data</p> |
+| stats | <code>boolean</code> | <p>Used to determine whether or not to parse stats data</p> |
 
 <a name="AWARDS_ENDPOINT"></a>
 

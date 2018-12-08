@@ -42,6 +42,7 @@ class People extends Endpoint {
   constructor(...ids: Array<number>) {
     super();
     this.playerIds = ids;
+    this.initUri();
   }
   public clear() {
     this.initUri();
@@ -58,7 +59,7 @@ class People extends Endpoint {
       const apiData = await this.load();
       return this.parseData(apiData);
     } catch (error) {
-      return Promise.reject(error.message);
+      return Promise.reject(error);
     }
   }
   /**
@@ -67,7 +68,7 @@ class People extends Endpoint {
    * @returns {Player[]}
    */
   public async parseData(apiData: any): Promise<Array<Player>> {
-    const people = idx(apiData, (_) => _.data.people);
+    const people = idx(apiData, (_) => _.people);
     if (!people || !Array.isArray(people)) {
       return Promise.reject('Unable to parse, missing data');
     }
