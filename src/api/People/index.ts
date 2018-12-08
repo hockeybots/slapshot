@@ -1,3 +1,5 @@
+import idx from 'idx';
+
 import { PEOPLE_ENDPOINT } from '../../endpoints';
 import { Player } from '../types';
 
@@ -5,8 +7,15 @@ import Endpoint from '../Endpoint';
 
 /**
  * People endpoint wrapper
+ * @extends Endpoint
+ * @description An abstraction of the {PEOPLE_ENDPOINT} with a fluent API
  */
 class People extends Endpoint {
+  /**
+   * This method will transform API data in to a Player object.
+   * @param apiData {object} - The conference object of the response from the NHL API
+   * @returns Player
+   */
   public static async toPlayer(apiData: any): Promise<Player> {
     const player: Player = {
       age: apiData.currentAge,
@@ -40,6 +49,10 @@ class People extends Endpoint {
   public initUri() {
     this.uri = `${PEOPLE_ENDPOINT}?personIds=${this.playerIds.join(',')}`;
   }
+  /**
+   * @description This method is used after building of the URI is complete. It will fetch and parse the NHL API data.
+   * @returns Player[]
+   */
   public async data(): Promise<Array<Player>> {
     try {
       const apiData = await this.load();
@@ -48,9 +61,17 @@ class People extends Endpoint {
       return Promise.reject(error.message);
     }
   }
-
+  /**
+   * @description This method will parse the raw NHL API data in to an array of Player objects.
+   * @param {object} apiData The raw NHL API data
+   * @returns Player[]
+   */
   public async parseData(apiData: any): Promise<Array<Player>> {
-    return Promise.all<Player>(apiData.data.people.map((person: any) => People.toPlayer(person)));
+    const people = idx(apiData, (_) => _.data.people);
+    if (!people || !Array.isArray(people)) {
+      return Promise.reject('Unable to parse, missing data');
+    }
+    return Promise.all<Player>(people.map((person: any) => People.toPlayer(person)));
   }
 }
 

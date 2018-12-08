@@ -17,7 +17,11 @@ slapshot is an NHL API library written in [TypeScript](https://github.com/Micros
   - [Typedefs](#typedefs)
   - [*Endpoint*](#endpoint)
     - [*new Endpoint()*](#new-endpoint)
-  - [People](#people)
+  - [People ⇐ <code>Endpoint</code>](#people-%E2%87%90-codeendpointcode)
+    - [new People()](#new-people)
+    - [people.data() ⇒](#peopledata-%E2%87%92)
+    - [people.parseData(apiData) ⇒](#peopleparsedataapidata-%E2%87%92)
+    - [People.toPlayer(apiData) ⇒](#peopletoplayerapidata-%E2%87%92)
   - [Teams ⇐ <code>Endpoint</code>](#teams-%E2%87%90-codeendpointcode)
     - [new Teams()](#new-teams)
     - [teams.data() ⇒](#teamsdata-%E2%87%92)
@@ -153,7 +157,7 @@ teams.forEach(team =>
 <dl>
 <dt><a href="#Endpoint">Endpoint</a></dt>
 <dd></dd>
-<dt><a href="#People">People</a></dt>
+<dt><a href="#People">People</a> ⇐ <code><a href="#Endpoint">Endpoint</a></code></dt>
 <dd><p>People endpoint wrapper</p></dd>
 <dt><a href="#Teams">Teams</a> ⇐ <code><a href="#Endpoint">Endpoint</a></code></dt>
 <dd><p>Teams endpoint wrapper</p></dd>
@@ -165,67 +169,67 @@ teams.forEach(team =>
 <dt><a href="#AWARDS_ENDPOINT">AWARDS_ENDPOINT</a> : <code>string</code></dt>
 <dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
 <dt><a href="#CONFERENCES_ENDPOINT">CONFERENCES_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL conferences</p></dd>
 <dt><a href="#DIVISIONS_ENDPOINT">DIVISIONS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL divisions</p></dd>
 <dt><a href="#DRAFT_ENDPOINT">DRAFT_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL draft information</p></dd>
 <dt><a href="#DRAFT_PROSPECTS_ENDPOINT">DRAFT_PROSPECTS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL draft proscpect information</p></dd>
 <dt><a href="#GAME_ENDPOINT">GAME_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL game information</p></dd>
 <dt><a href="#PEOPLE_ENDPOINT">PEOPLE_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL people and player information</p></dd>
 <dt><a href="#SCHEDULE_ENDPOINT">SCHEDULE_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL team schedule information</p></dd>
 <dt><a href="#STANDINGS_ENDPOINT">STANDINGS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL team standings</p></dd>
 <dt><a href="#STANDINGS_TYPES_ENDPOINT">STANDINGS_TYPES_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL standing types</p></dd>
 <dt><a href="#STATS_TYPES_ENDPOINT">STATS_TYPES_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL stats types</p></dd>
 <dt><a href="#TEAMS_ENDPOINT">TEAMS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL teams</p></dd>
 <dt><a href="#ALL_TIME_RECORD_VS_FRANCHISE_ENDPOINT">ALL_TIME_RECORD_VS_FRANCHISE_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL all time records against the target franchise</p></dd>
 <dt><a href="#ATTENDANCE_RECORDS_ENDPOINT">ATTENDANCE_RECORDS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL attendance records</p></dd>
 <dt><a href="#DRAFT_RECORDS_ENDPOINT">DRAFT_RECORDS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL draft records</p></dd>
 <dt><a href="#FRANCHISE_DETAIL_RECORDS_ENDPOINT">FRANCHISE_DETAIL_RECORDS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL franchise record details</p></dd>
 <dt><a href="#FRANCHISE_GOALIE_RECORDS_ENDPOINT">FRANCHISE_GOALIE_RECORDS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL franchise goalie records</p></dd>
 <dt><a href="#FRANCHISE_RECORDS_ENDPOINT">FRANCHISE_RECORDS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL franchise</p></dd>
 <dt><a href="#FRANCHISE_SEASON_RESULTS_ENDPOINT">FRANCHISE_SEASON_RESULTS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL franchise results for a target season</p></dd>
 <dt><a href="#FRANCHISE_SKATER_RECORDS_ENDPOINT">FRANCHISE_SKATER_RECORDS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL franchise skater records</p></dd>
 <dt><a href="#FRANCHISE_TEAM_TOTALS_ENDPOINT">FRANCHISE_TEAM_TOTALS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL franchise team totals</p></dd>
 <dt><a href="#MILESTONE_1000_POINT_CAREER_ENDPOINT">MILESTONE_1000_POINT_CAREER_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL players who have reached 1000 points in a career</p></dd>
 <dt><a href="#MILESTONE_100_POINT_SEASON_ENDPOINT">MILESTONE_100_POINT_SEASON_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL players who have reached 100 points in a season</p></dd>
 <dt><a href="#MILESTONE_500_GOAL_CAREER_ENDPOINT">MILESTONE_500_GOAL_CAREER_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL players who have scored 500 career goals</p></dd>
 <dt><a href="#MILESTONE_50_GOAL_SEASON_ENDPOINT">MILESTONE_50_GOAL_SEASON_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL players who have scored 50 goals in a season</p></dd>
 <dt><a href="#MILESTONE_5_GOAL_GAME_ENDPOINT">MILESTONE_5_GOAL_GAME_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL players who have scored 5 goals in a game</p></dd>
 <dt><a href="#OFFICIALS_ENDPOINT">OFFICIALS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL officials</p></dd>
 <dt><a href="#PLAYER_RECORDS_ENDPOINT">PLAYER_RECORDS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL player records</p></dd>
 <dt><a href="#PLAYOFFS_SERIES_RECORDS_ENDPOINT">PLAYOFFS_SERIES_RECORDS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL playoff series records</p></dd>
 <dt><a href="#PLAYOFF_FRANCHISE_VS_FRANCHISE_ENDPOINT">PLAYOFF_FRANCHISE_VS_FRANCHISE_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL playoff records against each target franchise</p></dd>
 <dt><a href="#RECORD_DETAIL_ENDPOINT">RECORD_DETAIL_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL record details</p></dd>
 <dt><a href="#TROPHY_RECORDS_ENDPOINT">TROPHY_RECORDS_ENDPOINT</a> : <code>string</code></dt>
-<dd><p>Endpoint used for fetching NHL distributed awards</p></dd>
+<dd><p>Endpoint used for fetching NHL trophies</p></dd>
 </dl>
 
 ## Functions
@@ -262,10 +266,56 @@ All endpoints, for example {Teams} extend Endpoint</p>
 
 <a name="People"></a>
 
-## People
+## People ⇐ [<code>Endpoint</code>](#Endpoint)
 <p>People endpoint wrapper</p>
 
 **Kind**: global class  
+**Extends**: [<code>Endpoint</code>](#Endpoint)  
+
+* [People](#People) ⇐ [<code>Endpoint</code>](#Endpoint)
+    * [new People()](#new_People_new)
+    * _instance_
+        * [.data()](#People+data) ⇒
+        * [.parseData(apiData)](#People+parseData) ⇒
+    * _static_
+        * [.toPlayer(apiData)](#People.toPlayer) ⇒
+
+<a name="new_People_new"></a>
+
+### new People()
+<p>An abstraction of the {PEOPLE_ENDPOINT} with a fluent API</p>
+
+<a name="People+data"></a>
+
+### people.data() ⇒
+<p>This method is used after building of the URI is complete. It will fetch and parse the NHL API data.</p>
+
+**Kind**: instance method of [<code>People</code>](#People)  
+**Returns**: <p>Player[]</p>  
+<a name="People+parseData"></a>
+
+### people.parseData(apiData) ⇒
+<p>This method will parse the raw NHL API data in to an array of Player objects.</p>
+
+**Kind**: instance method of [<code>People</code>](#People)  
+**Returns**: <p>Player[]</p>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| apiData | <code>object</code> | <p>The raw NHL API data</p> |
+
+<a name="People.toPlayer"></a>
+
+### People.toPlayer(apiData) ⇒
+<p>This method will transform API data in to a Player object.</p>
+
+**Kind**: static method of [<code>People</code>](#People)  
+**Returns**: <p>Player</p>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| apiData | <code>object</code> | <p>The conference object of the response from the NHL API</p> |
+
 <a name="Teams"></a>
 
 ## Teams ⇐ [<code>Endpoint</code>](#Endpoint)
@@ -411,187 +461,187 @@ statistical data.</p>
 <a name="CONFERENCES_ENDPOINT"></a>
 
 ## CONFERENCES\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL conferences</p>
 
 **Kind**: global constant  
 <a name="DIVISIONS_ENDPOINT"></a>
 
 ## DIVISIONS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL divisions</p>
 
 **Kind**: global constant  
 <a name="DRAFT_ENDPOINT"></a>
 
 ## DRAFT\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL draft information</p>
 
 **Kind**: global constant  
 <a name="DRAFT_PROSPECTS_ENDPOINT"></a>
 
 ## DRAFT\_PROSPECTS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL draft proscpect information</p>
 
 **Kind**: global constant  
 <a name="GAME_ENDPOINT"></a>
 
 ## GAME\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL game information</p>
 
 **Kind**: global constant  
 <a name="PEOPLE_ENDPOINT"></a>
 
 ## PEOPLE\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL people and player information</p>
 
 **Kind**: global constant  
 <a name="SCHEDULE_ENDPOINT"></a>
 
 ## SCHEDULE\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL team schedule information</p>
 
 **Kind**: global constant  
 <a name="STANDINGS_ENDPOINT"></a>
 
 ## STANDINGS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL team standings</p>
 
 **Kind**: global constant  
 <a name="STANDINGS_TYPES_ENDPOINT"></a>
 
 ## STANDINGS\_TYPES\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL standing types</p>
 
 **Kind**: global constant  
 <a name="STATS_TYPES_ENDPOINT"></a>
 
 ## STATS\_TYPES\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL stats types</p>
 
 **Kind**: global constant  
 <a name="TEAMS_ENDPOINT"></a>
 
 ## TEAMS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL teams</p>
 
 **Kind**: global constant  
 <a name="ALL_TIME_RECORD_VS_FRANCHISE_ENDPOINT"></a>
 
 ## ALL\_TIME\_RECORD\_VS\_FRANCHISE\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL all time records against the target franchise</p>
 
 **Kind**: global constant  
 <a name="ATTENDANCE_RECORDS_ENDPOINT"></a>
 
 ## ATTENDANCE\_RECORDS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL attendance records</p>
 
 **Kind**: global constant  
 <a name="DRAFT_RECORDS_ENDPOINT"></a>
 
 ## DRAFT\_RECORDS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL draft records</p>
 
 **Kind**: global constant  
 <a name="FRANCHISE_DETAIL_RECORDS_ENDPOINT"></a>
 
 ## FRANCHISE\_DETAIL\_RECORDS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL franchise record details</p>
 
 **Kind**: global constant  
 <a name="FRANCHISE_GOALIE_RECORDS_ENDPOINT"></a>
 
 ## FRANCHISE\_GOALIE\_RECORDS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL franchise goalie records</p>
 
 **Kind**: global constant  
 <a name="FRANCHISE_RECORDS_ENDPOINT"></a>
 
 ## FRANCHISE\_RECORDS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL franchise</p>
 
 **Kind**: global constant  
 <a name="FRANCHISE_SEASON_RESULTS_ENDPOINT"></a>
 
 ## FRANCHISE\_SEASON\_RESULTS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL franchise results for a target season</p>
 
 **Kind**: global constant  
 <a name="FRANCHISE_SKATER_RECORDS_ENDPOINT"></a>
 
 ## FRANCHISE\_SKATER\_RECORDS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL franchise skater records</p>
 
 **Kind**: global constant  
 <a name="FRANCHISE_TEAM_TOTALS_ENDPOINT"></a>
 
 ## FRANCHISE\_TEAM\_TOTALS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL franchise team totals</p>
 
 **Kind**: global constant  
 <a name="MILESTONE_1000_POINT_CAREER_ENDPOINT"></a>
 
 ## MILESTONE\_1000\_POINT\_CAREER\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL players who have reached 1000 points in a career</p>
 
 **Kind**: global constant  
 <a name="MILESTONE_100_POINT_SEASON_ENDPOINT"></a>
 
 ## MILESTONE\_100\_POINT\_SEASON\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL players who have reached 100 points in a season</p>
 
 **Kind**: global constant  
 <a name="MILESTONE_500_GOAL_CAREER_ENDPOINT"></a>
 
 ## MILESTONE\_500\_GOAL\_CAREER\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL players who have scored 500 career goals</p>
 
 **Kind**: global constant  
 <a name="MILESTONE_50_GOAL_SEASON_ENDPOINT"></a>
 
 ## MILESTONE\_50\_GOAL\_SEASON\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL players who have scored 50 goals in a season</p>
 
 **Kind**: global constant  
 <a name="MILESTONE_5_GOAL_GAME_ENDPOINT"></a>
 
 ## MILESTONE\_5\_GOAL\_GAME\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL players who have scored 5 goals in a game</p>
 
 **Kind**: global constant  
 <a name="OFFICIALS_ENDPOINT"></a>
 
 ## OFFICIALS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL officials</p>
 
 **Kind**: global constant  
 <a name="PLAYER_RECORDS_ENDPOINT"></a>
 
 ## PLAYER\_RECORDS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL player records</p>
 
 **Kind**: global constant  
 <a name="PLAYOFFS_SERIES_RECORDS_ENDPOINT"></a>
 
 ## PLAYOFFS\_SERIES\_RECORDS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL playoff series records</p>
 
 **Kind**: global constant  
 <a name="PLAYOFF_FRANCHISE_VS_FRANCHISE_ENDPOINT"></a>
 
 ## PLAYOFF\_FRANCHISE\_VS\_FRANCHISE\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL playoff records against each target franchise</p>
 
 **Kind**: global constant  
 <a name="RECORD_DETAIL_ENDPOINT"></a>
 
 ## RECORD\_DETAIL\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL record details</p>
 
 **Kind**: global constant  
 <a name="TROPHY_RECORDS_ENDPOINT"></a>
 
 ## TROPHY\_RECORDS\_ENDPOINT : <code>string</code>
-<p>Endpoint used for fetching NHL distributed awards</p>
+<p>Endpoint used for fetching NHL trophies</p>
 
 **Kind**: global constant  
 <a name="genEndpoint
