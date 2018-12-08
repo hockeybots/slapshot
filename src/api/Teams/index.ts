@@ -92,7 +92,10 @@ class Teams extends Endpoint {
       }
     }
     if (previousGame) {
-      const rosterIds = idx(apiData, (_) => _.roster.roster.map((rosterMember: any) => rosterMember.person.id));
+      const previousGameId = idx(apiData, (_) => _.previousGameSchedule.dates[0].games[0].gamePk);
+      if (previousGameId && typeof previousGameId === 'number') {
+        team.previousGame = await new Games(previousGameId).data();
+      }
     }
     return team;
   }

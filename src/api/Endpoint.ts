@@ -19,6 +19,7 @@ abstract class Endpoint {
     }
     return Promise.reject(`Cannot load data from an invalid endpoint ${this.uri}`);
   }
+  public appendToUri = (path: string) => `${this.uri}/${path}`;
   /**
    *
    * @abstract
