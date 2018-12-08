@@ -14,7 +14,7 @@ class People extends Endpoint {
   /**
    * This method will transform API data in to a Player object.
    * @param apiData {object} - The conference object of the response from the NHL API
-   * @returns Player
+   * @returns {Player}
    */
   public static async toPlayer(apiData: any): Promise<Player> {
     const player: Player = {
@@ -64,7 +64,7 @@ class People extends Endpoint {
   /**
    * @description This method will parse the raw NHL API data in to an array of Player objects.
    * @param {object} apiData The raw NHL API data
-   * @returns Player[]
+   * @returns {Player[]}
    */
   public async parseData(apiData: any): Promise<Array<Player>> {
     const people = idx(apiData, (_) => _.data.people);

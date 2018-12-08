@@ -20,21 +20,21 @@ slapshot is an NHL API library written in [TypeScript](https://github.com/Micros
   - [People ⇐ <code>Endpoint</code>](#people-%E2%87%90-codeendpointcode)
     - [new People()](#new-people)
     - [people.data() ⇒](#peopledata-%E2%87%92)
-    - [people.parseData(apiData) ⇒](#peopleparsedataapidata-%E2%87%92)
-    - [People.toPlayer(apiData) ⇒](#peopletoplayerapidata-%E2%87%92)
+    - [people.parseData(apiData) ⇒ <code>Array.&lt;Player&gt;</code>](#peopleparsedataapidata-%E2%87%92-codearrayltplayergtcode)
+    - [People.toPlayer(apiData) ⇒ <code>Player</code>](#peopletoplayerapidata-%E2%87%92-codeplayercode)
   - [Teams ⇐ <code>Endpoint</code>](#teams-%E2%87%90-codeendpointcode)
     - [new Teams()](#new-teams)
-    - [teams.data() ⇒](#teamsdata-%E2%87%92)
-    - [teams.withRoster() ⇒](#teamswithroster-%E2%87%92)
-    - [teams.withPreviousGame() ⇒](#teamswithpreviousgame-%E2%87%92)
-    - [teams.withNextGame() ⇒](#teamswithnextgame-%E2%87%92)
-    - [teams.withStats() ⇒](#teamswithstats-%E2%87%92)
+    - [teams.data() ⇒ <code>Array.&lt;Teams&gt;</code>](#teamsdata-%E2%87%92-codearrayltteamsgtcode)
+    - [teams.withRoster() ⇒ <code>Teams</code>](#teamswithroster-%E2%87%92-codeteamscode)
+    - [teams.withPreviousGame() ⇒ <code>Teams</code>](#teamswithpreviousgame-%E2%87%92-codeteamscode)
+    - [teams.withNextGame() ⇒ <code>Teams</code>](#teamswithnextgame-%E2%87%92-codeteamscode)
+    - [teams.withStats() ⇒ <code>Teams</code>](#teamswithstats-%E2%87%92-codeteamscode)
     - [teams.all() ⇒](#teamsall-%E2%87%92)
-    - [teams.parseData(apiData) ⇒](#teamsparsedataapidata-%E2%87%92)
-    - [Teams.toConference(apiData) ⇒](#teamstoconferenceapidata-%E2%87%92)
-    - [Teams.toDivision(apiData) ⇒](#teamstodivisionapidata-%E2%87%92)
-    - [Teams.toVenue(apiData) ⇒](#teamstovenueapidata-%E2%87%92)
-    - [Teams.toTeam(apiData) ⇒](#teamstoteamapidata-%E2%87%92)
+    - [teams.parseData(apiData) ⇒ <code>Array.&lt;Team&gt;</code>](#teamsparsedataapidata-%E2%87%92-codearrayltteamgtcode)
+    - [Teams.toConference(apiData) ⇒ <code>Conference</code>](#teamstoconferenceapidata-%E2%87%92-codeconferencecode)
+    - [Teams.toDivision(apiData) ⇒ <code>Division</code>](#teamstodivisionapidata-%E2%87%92-codedivisioncode)
+    - [Teams.toVenue(apiData) ⇒ <code>Venue</code>](#teamstovenueapidata-%E2%87%92-codevenuecode)
+    - [Teams.toTeam(apiData) ⇒ <code>Team</code>](#teamstoteamapidata-%E2%87%92-codeteamcode)
   - [AWARDS\_ENDPOINT : <code>string</code>](#awards%5C_endpoint--codestringcode)
   - [CONFERENCES\_ENDPOINT : <code>string</code>](#conferences%5C_endpoint--codestringcode)
   - [DIVISIONS\_ENDPOINT : <code>string</code>](#divisions%5C_endpoint--codestringcode)
@@ -276,9 +276,9 @@ All endpoints, for example {Teams} extend Endpoint</p>
     * [new People()](#new_People_new)
     * _instance_
         * [.data()](#People+data) ⇒
-        * [.parseData(apiData)](#People+parseData) ⇒
+        * [.parseData(apiData)](#People+parseData) ⇒ <code>Array.&lt;Player&gt;</code>
     * _static_
-        * [.toPlayer(apiData)](#People.toPlayer) ⇒
+        * [.toPlayer(apiData)](#People.toPlayer) ⇒ <code>Player</code>
 
 <a name="new_People_new"></a>
 
@@ -294,11 +294,10 @@ All endpoints, for example {Teams} extend Endpoint</p>
 **Returns**: <p>Player[]</p>  
 <a name="People+parseData"></a>
 
-### people.parseData(apiData) ⇒
+### people.parseData(apiData) ⇒ <code>Array.&lt;Player&gt;</code>
 <p>This method will parse the raw NHL API data in to an array of Player objects.</p>
 
 **Kind**: instance method of [<code>People</code>](#People)  
-**Returns**: <p>Player[]</p>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -306,11 +305,10 @@ All endpoints, for example {Teams} extend Endpoint</p>
 
 <a name="People.toPlayer"></a>
 
-### People.toPlayer(apiData) ⇒
+### People.toPlayer(apiData) ⇒ <code>Player</code>
 <p>This method will transform API data in to a Player object.</p>
 
 **Kind**: static method of [<code>People</code>](#People)  
-**Returns**: <p>Player</p>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -327,18 +325,18 @@ All endpoints, for example {Teams} extend Endpoint</p>
 * [Teams](#Teams) ⇐ [<code>Endpoint</code>](#Endpoint)
     * [new Teams()](#new_Teams_new)
     * _instance_
-        * [.data()](#Teams+data) ⇒
-        * [.withRoster()](#Teams+withRoster) ⇒
-        * [.withPreviousGame()](#Teams+withPreviousGame) ⇒
-        * [.withNextGame()](#Teams+withNextGame) ⇒
-        * [.withStats()](#Teams+withStats) ⇒
+        * [.data()](#Teams+data) ⇒ [<code>Array.&lt;Teams&gt;</code>](#Teams)
+        * [.withRoster()](#Teams+withRoster) ⇒ [<code>Teams</code>](#Teams)
+        * [.withPreviousGame()](#Teams+withPreviousGame) ⇒ [<code>Teams</code>](#Teams)
+        * [.withNextGame()](#Teams+withNextGame) ⇒ [<code>Teams</code>](#Teams)
+        * [.withStats()](#Teams+withStats) ⇒ [<code>Teams</code>](#Teams)
         * [.all()](#Teams+all) ⇒
-        * [.parseData(apiData)](#Teams+parseData) ⇒
+        * [.parseData(apiData)](#Teams+parseData) ⇒ [<code>Array.&lt;Team&gt;</code>](#Team)
     * _static_
-        * [.toConference(apiData)](#Teams.toConference) ⇒
-        * [.toDivision(apiData)](#Teams.toDivision) ⇒
-        * [.toVenue(apiData)](#Teams.toVenue) ⇒
-        * [.toTeam(apiData)](#Teams.toTeam) ⇒
+        * [.toConference(apiData)](#Teams.toConference) ⇒ [<code>Conference</code>](#Conference)
+        * [.toDivision(apiData)](#Teams.toDivision) ⇒ <code>Division</code>
+        * [.toVenue(apiData)](#Teams.toVenue) ⇒ <code>Venue</code>
+        * [.toTeam(apiData)](#Teams.toTeam) ⇒ [<code>Team</code>](#Team)
 
 <a name="new_Teams_new"></a>
 
@@ -347,44 +345,39 @@ All endpoints, for example {Teams} extend Endpoint</p>
 
 <a name="Teams+data"></a>
 
-### teams.data() ⇒
+### teams.data() ⇒ [<code>Array.&lt;Teams&gt;</code>](#Teams)
 <p>This method is used after building of the URI is complete. It will fetch and parse the NHL API data.</p>
 
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Teams[]</p>  
 <a name="Teams+withRoster"></a>
 
-### teams.withRoster() ⇒
+### teams.withRoster() ⇒ [<code>Teams</code>](#Teams)
 <p>This method will add the necessary query string to the URI for including the roster data.
 When parsing the API data we map all people ids from the roster to make a call to the
 PEOPLE_ENDPOINT for rich data.</p>
 
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Teams</p>  
 <a name="Teams+withPreviousGame"></a>
 
-### teams.withPreviousGame() ⇒
+### teams.withPreviousGame() ⇒ [<code>Teams</code>](#Teams)
 <p>This method will add the necessary query string to the URI for including the target team(s)
 previous game(s) data.</p>
 
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Teams</p>  
 <a name="Teams+withNextGame"></a>
 
-### teams.withNextGame() ⇒
+### teams.withNextGame() ⇒ [<code>Teams</code>](#Teams)
 <p>This method will add the necessary query string to the URI for including the target team(s)
 next game(s) data.</p>
 
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Teams</p>  
 <a name="Teams+withStats"></a>
 
-### teams.withStats() ⇒
+### teams.withStats() ⇒ [<code>Teams</code>](#Teams)
 <p>This method will add the necessary query string to the URI for including the target team(s)
 statistical data.</p>
 
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Teams</p>  
 <a name="Teams+all"></a>
 
 ### teams.all() ⇒
@@ -394,11 +387,10 @@ statistical data.</p>
 **Returns**: <p>Teams</p>  
 <a name="Teams+parseData"></a>
 
-### teams.parseData(apiData) ⇒
+### teams.parseData(apiData) ⇒ [<code>Array.&lt;Team&gt;</code>](#Team)
 <p>This method will parse the raw NHL API data in to an array of Team objects.</p>
 
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Team[]</p>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -406,11 +398,10 @@ statistical data.</p>
 
 <a name="Teams.toConference"></a>
 
-### Teams.toConference(apiData) ⇒
+### Teams.toConference(apiData) ⇒ [<code>Conference</code>](#Conference)
 <p>This method will transform API data in to a Conference object.</p>
 
 **Kind**: static method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Conference</p>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -418,11 +409,10 @@ statistical data.</p>
 
 <a name="Teams.toDivision"></a>
 
-### Teams.toDivision(apiData) ⇒
+### Teams.toDivision(apiData) ⇒ <code>Division</code>
 <p>This method will transform API data in to a Division object.</p>
 
 **Kind**: static method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Division</p>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -430,11 +420,10 @@ statistical data.</p>
 
 <a name="Teams.toVenue"></a>
 
-### Teams.toVenue(apiData) ⇒
+### Teams.toVenue(apiData) ⇒ <code>Venue</code>
 <p>This method will transform API data in to a Venue object.</p>
 
 **Kind**: static method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Venue</p>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -442,11 +431,10 @@ statistical data.</p>
 
 <a name="Teams.toTeam"></a>
 
-### Teams.toTeam(apiData) ⇒
+### Teams.toTeam(apiData) ⇒ [<code>Team</code>](#Team)
 <p>This method will transform API data in to a Team object.</p>
 
 **Kind**: static method of [<code>Teams</code>](#Teams)  
-**Returns**: <p>Team</p>  
 
 | Param | Type | Description |
 | --- | --- | --- |

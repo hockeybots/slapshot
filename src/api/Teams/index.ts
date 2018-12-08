@@ -15,7 +15,7 @@ class Teams extends Endpoint {
   /**
    * This method will transform API data in to a Conference object.
    * @param apiData {object} - The conference object of the response from the NHL API
-   * @returns Conference
+   * @returns {Conference}
    */
   public static toConference(apiData: any): Conference {
     return {
@@ -25,7 +25,7 @@ class Teams extends Endpoint {
   /**
    * This method will transform API data in to a Division object.
    * @param apiData {object} - The division object of the response from the NHL API
-   * @returns Division
+   * @returns {Division}
    */
   public static toDivision(apiData: any): Division {
     return {
@@ -36,7 +36,7 @@ class Teams extends Endpoint {
   /**
    * This method will transform API data in to a Venue object.
    * @param apiData {object} - The venue object of the response from the NHL API
-   * @returns Venue
+   * @returns {Venue}
    */
   public static toVenue(apiData: any): Venue {
     return {
@@ -50,7 +50,7 @@ class Teams extends Endpoint {
   /**
    * This method will transform API data in to a Team object.
    * @param apiData {object} - The Team object of the response from the NHL API
-   * @returns Team
+   * @returns {Team}
    */
   public static async toTeam(apiData: any, roster: boolean): Promise<Team> {
     const team: Team = {
@@ -95,7 +95,7 @@ class Teams extends Endpoint {
 
   /**
    * @description This method is used after building of the URI is complete. It will fetch and parse the NHL API data.
-   * @returns Teams[]
+   * @returns {Teams[]}
    */
   public async data(): Promise<Array<Team>> {
     try {
@@ -110,7 +110,7 @@ class Teams extends Endpoint {
    * @description This method will add the necessary query string to the URI for including the roster data.
    * When parsing the API data we map all people ids from the roster to make a call to the
    * PEOPLE_ENDPOINT for rich data.
-   * @returns Teams
+   * @returns {Teams}
    */
   public withRoster(): this {
     if (!this.roster) {
@@ -122,7 +122,7 @@ class Teams extends Endpoint {
   /**
    * @description This method will add the necessary query string to the URI for including the target team(s)
    * previous game(s) data.
-   * @returns Teams
+   * @returns {Teams}
    */
   public withPreviousGame(): this {
     if (!this.previousGame) {
@@ -134,7 +134,7 @@ class Teams extends Endpoint {
   /**
    * @description This method will add the necessary query string to the URI for including the target team(s)
    * next game(s) data.
-   * @returns Teams
+   * @returns {Teams}
    */
   public withNextGame(): this {
     if (!this.nextGame) {
@@ -146,7 +146,7 @@ class Teams extends Endpoint {
   /**
    * @description This method will add the necessary query string to the URI for including the target team(s)
    * statistical data.
-   * @returns Teams
+   * @returns {Teams}
    */
   public withStats(): this {
     if (!this.stats) {
@@ -168,7 +168,7 @@ class Teams extends Endpoint {
   /**
    * @description This method will parse the raw NHL API data in to an array of Team objects.
    * @param {object} apiData The raw NHL API data
-   * @returns Team[]
+   * @returns {Team[]}
    */
   public async parseData(apiData: any): Promise<Array<Team>> {
     const teams = idx(apiData, (_) => _.data.teams);
