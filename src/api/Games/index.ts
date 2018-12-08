@@ -128,7 +128,7 @@ class Games extends Endpoint {
   public async parseLineScoreData(apiData: any): Promise<LineScore> {
     const people = idx(apiData, (_) => _.people);
     if (!people || !Array.isArray(people)) {
-      return Promise.reject('Unable to parse, missing data');
+      return Promise.reject('Unable to parse, missing data.');
     }
     return Promise.all<Player>(people.map((person: any) => People.toPlayer(person)));
   }
