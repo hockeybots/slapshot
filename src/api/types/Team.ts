@@ -13,7 +13,7 @@ import Venue from './Venue';
  * @property {number} id - The ID of the team in the API (1: New Jersey, 21: Colorado, etc).
  * @property {string} locationName - The team's location name. EG: "Anaheim" for the Ducks.
  * @property {string} name - The team's full name. EG: "Anaheim Ducks".
- * @property {Array<Player>} roster - The team's roster, optional. Contianing an array of players on the team.
+ * @property {Array<Player>} [roster] - Array of players on the team. Optional.
  * @property {string} shortName - The team's short name. EG: "NY Islanders" for NYI.
  * @property {string} siteUrl - The team's official website url.
  * @property {string} teamName - The team's name. EG: "Ducks" for Anaheim.

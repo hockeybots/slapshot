@@ -768,7 +768,7 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 | id | <code>number</code> | <p>The ID of the team in the API (1: New Jersey, 21: Colorado, etc).</p> |
 | locationName | <code>string</code> | <p>The team's location name. EG: &quot;Anaheim&quot; for the Ducks.</p> |
 | name | <code>string</code> | <p>The team's full name. EG: &quot;Anaheim Ducks&quot;.</p> |
-| roster | [<code>Array.&lt;Player&gt;</code>](#Player) | <p>The team's roster, optional. Contianing an array of players on the team.</p> |
+| [roster] | [<code>Array.&lt;Player&gt;</code>](#Player) | <p>Array of players on the team. Optional.</p> |
 | shortName | <code>string</code> | <p>The team's short name. EG: &quot;NY Islanders&quot; for NYI.</p> |
 | siteUrl | <code>string</code> | <p>The team's official website url.</p> |
 | teamName | <code>string</code> | <p>The team's name. EG: &quot;Ducks&quot; for Anaheim.</p> |
