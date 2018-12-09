@@ -784,7 +784,11 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 
 | Name | Type | Description |
 | --- | --- | --- |
+| city | <code>string</code> | <p>The city the venue is located in.</p> |
 | name | <code>string</code> | <p>The name of the venue.</p> |
+| timeZoneAbbreviation | <code>string</code> | <p>The abbreviation of the timezone.</p> |
+| timeZoneName | <code>string</code> | <p>The name of the timezone.</p> |
+| utcOffset | <code>number</code> | <p>UTC offset.</p> |
 
 <a name="STATS_API_ENDPOINT"></a>
 
