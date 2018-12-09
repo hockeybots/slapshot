@@ -704,7 +704,7 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 | id | <code>id</code> | <p>The ID of the division as returned by the NHL API.</p> |
 | name | <code>string</code> | <p>The name of the division.</p> |
 | shortName | <code>shortName</code> | <p>The short name of the divison. (EG: ATL for Atrlanic).</p> |
-| [teams] | [<code>Array.&lt;Teams&gt;</code>](#Teams) | <p>Array of teams in the division. Optional.</p> |
+| [teams] | [<code>Array.&lt;Team&gt;</code>](#Team) | <p>Array of teams in the division. Optional.</p> |
 
 <a name="Game"></a>
 

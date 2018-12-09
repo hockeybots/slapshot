@@ -9,7 +9,7 @@ import Team from './Team';
  * @property {id} id - The ID of the division as returned by the NHL API.
  * @property {string} name - The name of the division.
  * @property {shortName} shortName - The short name of the divison. (EG: ATL for Atrlanic).
- * @property {Array<Teams>} [teams] - Array of teams in the division. Optional.
+ * @property {Array<Team>} [teams] - Array of teams in the division. Optional.
  * @description - A representation of an NHL Division.
  */
 interface Division {
