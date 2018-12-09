@@ -1,3 +1,5 @@
+import Team from './Team';
+
 /**
  * @typedef {object} Conference
  * @property {string} abbreviation - The abbreviation for the conference.
@@ -5,6 +7,7 @@
  * @property {number} id - ID for the conference as returned by the NHL API.
  * @property {string} name - The name of the conference.
  * @property {string} shortName - The short name for the conference (EG: West for Western).
+ * @property {Array<Team>} [teams] - Array of teams in the conference. Optional.
  * @description A representation of an NHL Conference.
  */
 interface Conference {
@@ -13,6 +16,7 @@ interface Conference {
   id: number;
   name: string;
   shortName: string;
+  teams?: Array<Team>;
 }
 
 export default Conference;
