@@ -251,26 +251,25 @@ Composes BASE_ENDPOINT with the target path to create a valid endpoint(base, pat
 <dt><a href="#Conference">Conference</a> : <code>object</code></dt>
 <dd><p>A representation of an NHL Conference.</p></dd>
 <dt><a href="#Division">Division</a> : <code>object</code></dt>
-<dd><p>A representation of an NHL Division.</p></dd>
+<dd><ul>
+<li>A representation of an NHL Division.</li>
+</ul></dd>
 <dt><a href="#Game">Game</a> : <code>object</code></dt>
 <dd><p>A representation of an NHL Game.</p></dd>
 <dt><a href="#Player">Player</a> : <code>object</code></dt>
-<dd><p>A representation of an NHL Player.</p></dd>
+<dd><ul>
+<li>A representation of a PLayer.</li>
+</ul></dd>
 <dt><a href="#Team">Team</a> : <code>object</code></dt>
-<dd><p>A representation of an NHL Team.</p></dd>
+<dd><ul>
+<li>A representation of a team.</li>
+</ul></dd>
 <dt><a href="#Venue">Venue</a> : <code>object</code></dt>
 <dd><p>A representation of an NHL Venue.</p></dd>
 <dt><a href="#STATS_API_ENDPOINT">STATS_API_ENDPOINT</a> : <code>string</code></dt>
 <dd><p>Base endpoint of the NHL Stats API</p></dd>
 <dt><a href="#RECORDS_API_ENDPOINT">RECORDS_API_ENDPOINT</a> : <code>string</code></dt>
 <dd><p>Base endpoint of the NHL Records API</p></dd>
-</dl>
-
-## Typedefs
-
-<dl>
-<dt><a href="#Conference">Conference</a> : <code>object</code></dt>
-<dd><p>A representation of an NHL Conference.</p></dd>
 </dl>
 
 <a name="Endpoint"></a>
@@ -681,20 +680,31 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 
 | Name | Type | Description |
 | --- | --- | --- |
+| abbreviation | <code>string</code> | <p>The abbreviation for the conference.</p> |
+| active | <code>active</code> | <p>Whether the conference is active or not.</p> |
+| id | <code>number</code> | <p>ID for the conference as returned by the NHL API.</p> |
 | name | <code>string</code> | <p>The name of the conference.</p> |
+| shortName | <code>string</code> | <p>The short name for the conference (EG: West for Western).</p> |
 
 <a name="Division"></a>
 
 ## Division : <code>object</code>
-<p>A representation of an NHL Division.</p>
+<ul>
+<li>A representation of an NHL Division.</li>
+</ul>
 
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| abbreviation | <code>string</code> | <p>The divisions abbreviated name</p> |
+| abbreviation | <code>string</code> | <p>The divisions abbreviated name.</p> |
+| active | <code>boolean</code> | <p>Whether the division is active or not.</p> |
+| conference | [<code>Conference</code>](#Conference) | <p>Data on the conference the division belongs to.</p> |
+| id | <code>id</code> | <p>The ID of the division as returned by the NHL API.</p> |
 | name | <code>string</code> | <p>The name of the division.</p> |
+| shortName | <code>shortName</code> | <p>The short name of the divison. (EG: ATL for Atrlanic).</p> |
+| [teams] | [<code>Array.&lt;Teams&gt;</code>](#Teams) | <p>Array of teams in the division. Optional.</p> |
 
 <a name="Game"></a>
 
@@ -711,27 +721,57 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 <a name="Player"></a>
 
 ## Player : <code>object</code>
-<p>A representation of an NHL Player.</p>
+<ul>
+<li>A representation of a PLayer.</li>
+</ul>
 
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| fullName | <code>string</code> | <p>The full name of the player.</p> |
+| age | <code>number</code> | <p>A player's age.</p> |
+| birthDate | <code>Date</code> | <p>A player's birth date.</p> |
+| birthPlace | <code>string</code> | <p>Where a player was born.</p> |
+| dominantSide | <code>string</code> | <p>The side in which a skater shoots, or a goalie catches.</p> |
+| firstName | <code>string</code> | <p>A player's first name.</p> |
+| fullName | <code>string</code> | <p>A player's full name.</p> |
+| height | <code>string</code> | <p>How tall a player is.</p> |
+| id | <code>string</code> | <p>The ID of the player returned by the NHL API.</p> |
+| isAlternateCaptain | <code>boolean</code> | <p>Whether a player is an alternate captain or not.</p> |
+| isCaptain | <code>boolean</code> | <p>Whether a player is a captain or not.</p> |
+| isRookie | <code>boolean</code> | <p>Whether a player is a rookie or not.</p> |
+| jerseyNumber | <code>string</code> | <p>The number a player wears on their jersey.</p> |
+| lastName | <code>string</code> | <p>A player's last name.</p> |
+| position | <code>string</code> | <p>The position a player plays.</p> |
+| rosterStatus | <code>string</code> | <p>Whether a player is on the roster or not. (Y, N, I).</p> |
+| weight | <code>string</code> | <p>How much a player weighs.</p> |
 
 <a name="Team"></a>
 
 ## Team : <code>object</code>
-<p>A representation of an NHL Team.</p>
+<ul>
+<li>A representation of a team.</li>
+</ul>
 
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| abbreviation | <code>string</code> | <p>The teams name in abbpreviated form.</p> |
+| abbreviation | <code>string</code> | <p>The team's name in abbpreviated form.</p> |
 | active | <code>boolean</code> | <p>Indicates whether the team is currently active in the NHL.</p> |
+| conference | [<code>Conference</code>](#Conference) | <p>The conference data that the team belongs to.</p> |
+| division | [<code>Division</code>](#Division) | <p>The division data that the team belongs to.</p> |
+| firstYearOfPlay | <code>string</code> | <p>The first year the team played in the league.</p> |
+| id | <code>number</code> | <p>The ID of the team in the API (1: New Jersey, 21: Colorado, etc).</p> |
+| locationName | <code>string</code> | <p>The team's location name. EG: &quot;Anaheim&quot; for the Ducks.</p> |
+| name | <code>string</code> | <p>The team's full name. EG: &quot;Anaheim Ducks&quot;.</p> |
+| roster | [<code>Array.&lt;Player&gt;</code>](#Player) | <p>The team's roster, optional. Contianing an array of players on the team.</p> |
+| shortName | <code>string</code> | <p>The team's short name. EG: &quot;NY Islanders&quot; for NYI.</p> |
+| siteUrl | <code>string</code> | <p>The team's official website url.</p> |
+| teamName | <code>string</code> | <p>The team's name. EG: &quot;Ducks&quot; for Anaheim.</p> |
+| venue | [<code>Venue</code>](#Venue) | <p>Data of the venue the team plays in.</p> |
 
 <a name="Venue"></a>
 
@@ -750,7 +790,6 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 ## STATS\_API\_ENDPOINT : <code>string</code>
 <p>Base endpoint of the NHL Stats API</p>
 
-<<<<<<< HEAD
 **Kind**: global typedef  
 <a name="RECORDS_API_ENDPOINT"></a>
 
@@ -758,22 +797,3 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 <p>Base endpoint of the NHL Records API</p>
 
 **Kind**: global typedef  
-=======
-**Kind**: global constant  
-<a name="Conference"></a>
-
-## Conference : <code>object</code>
-<p>A representation of an NHL Conference.</p>
-
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| abbreviation | <code>string</code> | <p>The abbreviation for the conference.</p> |
-| active | <code>active</code> | <p>Whether the conference is active or not.</p> |
-| id | <code>number</code> | <p>ID for the conference as returned by the NHL API.</p> |
-| name | <code>string</code> | <p>The name of the conference.</p> |
-| shortName | <code>string</code> | <p>The short name for the conference (EG: West for Western).</p> |
-
->>>>>>> Changed to use @typedef and @description
