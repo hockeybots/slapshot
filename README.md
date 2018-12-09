@@ -266,6 +266,13 @@ Composes BASE_ENDPOINT with the target path to create a valid endpoint(base, pat
 <dd><p>Base endpoint of the NHL Records API</p></dd>
 </dl>
 
+## Typedefs
+
+<dl>
+<dt><a href="#Conference">Conference</a> : <code>object</code></dt>
+<dd><p>A representation of an NHL Conference.</p></dd>
+</dl>
+
 <a name="Endpoint"></a>
 
 ## *Endpoint*
@@ -743,6 +750,7 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 ## STATS\_API\_ENDPOINT : <code>string</code>
 <p>Base endpoint of the NHL Stats API</p>
 
+<<<<<<< HEAD
 **Kind**: global typedef  
 <a name="RECORDS_API_ENDPOINT"></a>
 
@@ -750,3 +758,22 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 <p>Base endpoint of the NHL Records API</p>
 
 **Kind**: global typedef  
+=======
+**Kind**: global constant  
+<a name="Conference"></a>
+
+## Conference : <code>object</code>
+<p>A representation of an NHL Conference.</p>
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| abbreviation | <code>string</code> | <p>The abbreviation for the conference.</p> |
+| active | <code>active</code> | <p>Whether the conference is active or not.</p> |
+| id | <code>number</code> | <p>ID for the conference as returned by the NHL API.</p> |
+| name | <code>string</code> | <p>The name of the conference.</p> |
+| shortName | <code>string</code> | <p>The short name for the conference (EG: West for Western).</p> |
+
+>>>>>>> Changed to use @typedef and @description
