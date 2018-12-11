@@ -33,8 +33,8 @@ describe('Api', () => {
     describe('parseData', () => {
       describe('when no data is passed', () => {
         it('handles the error', () => {
-          const player = new People(1).parseData(null);
-          expect(player).not.toBeNull();
+          const player = new People(1);
+          expect(player.parseData(null)).rejects.toBe('Unable to parse, missing data');
         });
       });
     });
