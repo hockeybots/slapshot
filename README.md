@@ -700,11 +700,9 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 | --- | --- | --- |
 | abbreviation | <code>string</code> | <p>The divisions abbreviated name.</p> |
 | active | <code>boolean</code> | <p>Whether the division is active or not.</p> |
-| conference | [<code>Conference</code>](#Conference) | <p>Data on the conference the division belongs to.</p> |
 | id | <code>id</code> | <p>The ID of the division as returned by the NHL API.</p> |
 | name | <code>string</code> | <p>The name of the division.</p> |
 | shortName | <code>shortName</code> | <p>The short name of the divison. (EG: ATL for Atrlanic).</p> |
-| [teams] | [<code>Array.&lt;Team&gt;</code>](#Team) | <p>Array of teams in the division. Optional.</p> |
 
 <a name="Game"></a>
 
