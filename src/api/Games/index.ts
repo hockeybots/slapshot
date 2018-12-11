@@ -118,7 +118,7 @@ class Games extends Endpoint {
     if (!people || !Array.isArray(people)) {
       return Promise.reject('Unable to parse, missing data');
     }
-    return Promise.all<Player>(people.map((person: any) => People.toPlayer(person)));
+    return null;
   }
   /*
    * @description This method will parse the raw NHL API data in to an array of Player objects.
@@ -130,7 +130,7 @@ class Games extends Endpoint {
     if (!people || !Array.isArray(people)) {
       return Promise.reject('Unable to parse, missing data.');
     }
-    return Promise.all<Player>(people.map((person: any) => People.toPlayer(person)));
+    return null;
   }
   /*
    * @description This method will parse the raw NHL API data in to an array of Player objects.
@@ -142,7 +142,7 @@ class Games extends Endpoint {
     if (!people || !Array.isArray(people)) {
       return Promise.reject('Unable to parse, missing data');
     }
-    return Promise.all<Player>(people.map((person: any) => People.toPlayer(person)));
+    return null;
   }
 }
 

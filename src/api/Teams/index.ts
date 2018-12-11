@@ -4,6 +4,7 @@ import { TEAMS_ENDPOINT } from '../../endpoints';
 import { Conference, Division, Game, Team, Venue } from '../types';
 
 import Endpoint from '../Endpoint';
+import Games from '../Games';
 import People from '../People';
 
 /**
