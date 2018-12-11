@@ -685,7 +685,6 @@ Composes BASE\_ENDPOINT with the target path to create a valid endpoint(base, pa
 | id | <code>number</code> | <p>ID for the conference as returned by the NHL API.</p> |
 | name | <code>string</code> | <p>The name of the conference.</p> |
 | shortName | <code>string</code> | <p>The short name for the conference (EG: West for Western).</p> |
-| [teams] | [<code>Array.&lt;Team&gt;</code>](#Team) | <p>Array of teams in the conference. Optional.</p> |
 
 <a name="Division"></a>
 
