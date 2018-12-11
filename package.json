@@ -6,7 +6,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest",
-    "build:doc": "jsdoc2md --files 'src/**/*.ts' --configure jsdoc2md.json --template README.hbs > README.md && doctoc README.md"
+    "build:doc": "jsdoc2md --files 'src/**/*.ts' --configure jsdoc2md.json --template API_README.hbs > docs/API.md && doctoc docs/API.md"
   },
   "repository": {
     "type": "git",
