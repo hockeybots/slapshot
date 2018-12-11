@@ -19,7 +19,11 @@ class Teams extends Endpoint {
    */
   public static toConference(apiData: any): Conference {
     return {
+      abbreviation: apiData.abbreviation,
+      active: apiData.active,
+      id: apiData.id,
       name: apiData.name,
+      shortName: apiData.shortName,
     };
   }
   /**
@@ -28,9 +32,13 @@ class Teams extends Endpoint {
    * @returns {Division}
    */
   public static toDivision(apiData: any): Division {
+    // TODO: Change conference to optional and fetch conference from endpoint if withConference.
     return {
       abbreviation: apiData.abbreviation,
+      active: apiData.active,
+      id: apiData.id,
       name: apiData.name,
+      shortName: apiData.shortName,
     };
   }
   /**

@@ -124,22 +124,50 @@ describe('Api', () => {
     });
     describe('toConference', () => {
       const mockApiData = {
+        abbreviation: 'WW',
+        active: true,
+        id: 1,
         name: 'Wild West',
+        shortName: 'Wild',
       };
+      it('should return a conference object with the correct abbreviation', () => {
+        expect(Teams.toConference(mockApiData).abbreviation).toBe(mockApiData.abbreviation);
+      });
+      it('should return a conference object with the correct active status', () => {
+        expect(Teams.toConference(mockApiData).active).toBe(mockApiData.active);
+      });
+      it('should return a conference object with the correct id', () => {
+        expect(Teams.toConference(mockApiData).id).toBe(mockApiData.id);
+      });
       it('should return a conference object with the correct name', () => {
         expect(Teams.toConference(mockApiData).name).toBe(mockApiData.name);
+      });
+      it('should return a conference object with the correct short name', () => {
+        expect(Teams.toConference(mockApiData).shortName).toBe(mockApiData.shortName);
       });
     });
     describe('toDivision', () => {
       const mockApiData = {
         abbreviation: 'GB',
+        active: true,
+        id: 5,
         name: 'Gummy Bears',
+        shortName: 'Gummy',
       };
+      it('should return a division object with the correct abbreviation', () => {
+        expect(Teams.toDivision(mockApiData).abbreviation).toBe(mockApiData.abbreviation);
+      });
+      it('should return a division object with the correct active status', () => {
+        expect(Teams.toDivision(mockApiData).active).toBe(mockApiData.active);
+      });
+      it('should return a division object with the correct id', () => {
+        expect(Teams.toDivision(mockApiData).id).toBe(mockApiData.id);
+      });
       it('should return a division object with the correct name', () => {
         expect(Teams.toDivision(mockApiData).name).toBe(mockApiData.name);
       });
-      it('should return a division object with the correct abbreviation', () => {
-        expect(Teams.toDivision(mockApiData).abbreviation).toBe(mockApiData.abbreviation);
+      it('should return a division object with the correct short name', () => {
+        expect(Teams.toDivision(mockApiData).shortName).toBe(mockApiData.shortName);
       });
     });
     describe('toVenue', () => {
@@ -181,10 +209,17 @@ describe('Api', () => {
         teamName: 'Razors',
         division: {
           abbreviation: 'GB',
+          active: true,
+          id: 5,
           name: 'Gummy Bears',
+          shortName: 'Gummy',
         },
         conference: {
+          abbreviation: 'WW',
+          active: true,
+          id: 1,
           name: 'Wild West',
+          shortName: 'Wild',
         },
         venue: {
           city: 'Tokyooo',
