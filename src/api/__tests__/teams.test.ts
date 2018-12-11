@@ -150,13 +150,6 @@ describe('Api', () => {
       const mockApiData = {
         abbreviation: 'GB',
         active: true,
-        conference: {
-          abbreviation: 'WW',
-          active: true,
-          id: 1,
-          name: 'Wild West',
-          shortName: 'Wild',
-        },
         id: 5,
         name: 'Gummy Bears',
         shortName: 'Gummy',
@@ -166,21 +159,6 @@ describe('Api', () => {
       });
       it('should return a division object with the correct active status', () => {
         expect(Teams.toDivision(mockApiData).active).toBe(mockApiData.active);
-      });
-      it('should return a division object with the correct conference abbreviation', () => {
-        expect(Teams.toDivision(mockApiData).conference.abbreviation).toBe(mockApiData.conference.abbreviation);
-      });
-      it('should return a division object with the correct conference active status', () => {
-        expect(Teams.toDivision(mockApiData).conference.active).toBe(mockApiData.conference.active);
-      });
-      it('should return a division object with the correct conference id', () => {
-        expect(Teams.toDivision(mockApiData).conference.id).toBe(mockApiData.conference.id);
-      });
-      it('should return a division object with the correct conference name', () => {
-        expect(Teams.toDivision(mockApiData).conference.name).toBe(mockApiData.conference.name);
-      });
-      it('should return a division object with the correct conference short name', () => {
-        expect(Teams.toDivision(mockApiData).conference.shortName).toBe(mockApiData.conference.shortName);
       });
       it('should return a division object with the correct id', () => {
         expect(Teams.toDivision(mockApiData).id).toBe(mockApiData.id);
@@ -232,13 +210,6 @@ describe('Api', () => {
         division: {
           abbreviation: 'GB',
           active: true,
-          conference: {
-            abbreviation: 'WW',
-            active: true,
-            id: 1,
-            name: 'Wild West',
-            shortName: 'Wild',
-          },
           id: 5,
           name: 'Gummy Bears',
           shortName: 'Gummy',

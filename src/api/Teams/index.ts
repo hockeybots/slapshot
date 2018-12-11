@@ -36,7 +36,6 @@ class Teams extends Endpoint {
     return {
       abbreviation: apiData.abbreviation,
       active: apiData.active,
-      conference: this.toConference(apiData.conference),
       id: apiData.id,
       name: apiData.name,
       shortName: apiData.shortName,
