@@ -236,13 +236,5 @@ describe('Api', () => {
         expect(team).toMatchSnapshot();
       });
     });
-    describe('parseData', () => {
-      describe('when no data is passed', () => {
-        it('handles the error', () => {
-          const team = new Teams(1).parseData(null);
-          expect(team).not.toBeNull();
-        });
-      });
-    });
   });
 });

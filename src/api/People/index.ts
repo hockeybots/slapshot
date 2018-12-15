@@ -57,22 +57,10 @@ class People extends Endpoint {
   public async data(): Promise<Array<Player>> {
     try {
       const apiData = await this.load();
-      return this.parseData(apiData);
+      return this.parseData<Player>(apiData, 'people', People.toPlayer);
     } catch (error) {
       return Promise.reject(error);
     }
-  }
-  /**
-   * @description This method will parse the raw NHL API data in to an array of Player objects.
-   * @param {object} apiData The raw NHL API data
-   * @returns {Player[]}
-   */
-  public async parseData(apiData: any): Promise<Array<Player>> {
-    const people = idx(apiData, (_) => _.people);
-    if (!people || !Array.isArray(people)) {
-      return Promise.reject('Unable to parse, missing data');
-    }
-    return Promise.all<Player>(people.map((person: any) => People.toPlayer(person)));
   }
 }
 

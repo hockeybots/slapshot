@@ -46,22 +46,10 @@ class Conferences extends Endpoint {
   public async data(): Promise<Array<Conference>> {
     try {
       const apiData = await this.load();
-      return this.parseData(apiData);
+      return this.parseData<Conference>(apiData, 'conferences', Conferences.toConference);
     } catch (error) {
       return Promise.reject(error);
     }
-  }
-  /**
-   * @description This method will parse the raw NHL API data in to an array of Conference objects.
-   * @param {object} apiData The raw NHL API data
-   * @returns {Array<Conference>}
-   */
-  public async parseData(apiData: any): Promise<Array<Conference>> {
-    const conferences = idx(apiData, (_) => _.conferences);
-    if (!conferences || !Array.isArray(conferences)) {
-      return Promise.reject('Unable to parse, missing data');
-    }
-    return Promise.all<Conference>(conferences.map((conference: any) => Conferences.toConference(conference)));
   }
 }
 
