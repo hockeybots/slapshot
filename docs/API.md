@@ -13,6 +13,11 @@ Internal API (developer) Documentation
   - [Constants](#constants)
   - [Functions](#functions)
   - [Typedefs](#typedefs)
+  - [Conferences ⇐ <code>Endpoint</code>](#conferences-%E2%87%90-codeendpointcode)
+    - [new Conferences()](#new-conferences)
+    - [conferences.data() ⇒ <code>Array.&lt;Conference&gt;</code>](#conferencesdata-%E2%87%92-codearrayltconferencegtcode)
+    - [conferences.parseData(apiData) ⇒ <code>Array.&lt;Conference&gt;</code>](#conferencesparsedataapidata-%E2%87%92-codearrayltconferencegtcode)
+    - [Conferences.toConference(apiData) ⇒ <code>Conference</code>](#conferencestoconferenceapidata-%E2%87%92-codeconferencecode)
   - [*Endpoint*](#endpoint)
     - [*new Endpoint()*](#new-endpoint)
   - [People ⇐ <code>Endpoint</code>](#people-%E2%87%90-codeendpointcode)
@@ -81,6 +86,8 @@ Internal API (developer) Documentation
 ## Classes
 
 <dl>
+<dt><a href="#Conferences">Conferences</a> ⇐ <code><a href="#Endpoint">Endpoint</a></code></dt>
+<dd><p>Conferences endpoint wrapper</p></dd>
 <dt><a href="#Endpoint">Endpoint</a></dt>
 <dd></dd>
 <dt><a href="#People">People</a> ⇐ <code><a href="#Endpoint">Endpoint</a></code></dt>
@@ -193,6 +200,55 @@ Composes BASE_ENDPOINT with the target path to create a valid endpoint(base, pat
 <dt><a href="#RECORDS_API_ENDPOINT">RECORDS_API_ENDPOINT</a> : <code>string</code></dt>
 <dd><p>Base endpoint of the NHL Records API</p></dd>
 </dl>
+
+<a name="Conferences"></a>
+
+## Conferences ⇐ [<code>Endpoint</code>](#Endpoint)
+<p>Conferences endpoint wrapper</p>
+
+**Kind**: global class  
+**Extends**: [<code>Endpoint</code>](#Endpoint)  
+
+* [Conferences](#Conferences) ⇐ [<code>Endpoint</code>](#Endpoint)
+    * [new Conferences()](#new_Conferences_new)
+    * _instance_
+        * [.data()](#Conferences+data) ⇒ [<code>Array.&lt;Conference&gt;</code>](#Conference)
+        * [.parseData(apiData)](#Conferences+parseData) ⇒ [<code>Array.&lt;Conference&gt;</code>](#Conference)
+    * _static_
+        * [.toConference(apiData)](#Conferences.toConference) ⇒ [<code>Conference</code>](#Conference)
+
+<a name="new_Conferences_new"></a>
+
+### new Conferences()
+<p>An abstraction of the {CONFERENCE_ENDPOINT} with a fluent API</p>
+
+<a name="Conferences+data"></a>
+
+### conferences.data() ⇒ [<code>Array.&lt;Conference&gt;</code>](#Conference)
+<p>This method is used after building of the URI is complete. It will fetch and parse the NHL API data.</p>
+
+**Kind**: instance method of [<code>Conferences</code>](#Conferences)  
+<a name="Conferences+parseData"></a>
+
+### conferences.parseData(apiData) ⇒ [<code>Array.&lt;Conference&gt;</code>](#Conference)
+<p>This method will parse the raw NHL API data in to an array of Conference objects.</p>
+
+**Kind**: instance method of [<code>Conferences</code>](#Conferences)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| apiData | <code>object</code> | <p>The raw NHL API data</p> |
+
+<a name="Conferences.toConference"></a>
+
+### Conferences.toConference(apiData) ⇒ [<code>Conference</code>](#Conference)
+<p>This method will transform API data in to a Conference object.</p>
+
+**Kind**: static method of [<code>Conferences</code>](#Conferences)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| apiData | <code>object</code> | <p>The conference object of the response from the NHL API</p> |
 
 <a name="Endpoint"></a>
 
