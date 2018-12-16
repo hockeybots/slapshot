@@ -23,7 +23,7 @@ import Venue from './Venue';
 interface Team {
   abbreviation: string;
   active: boolean;
-  conference: Conference;
+  conference?: Conference;
   division: Division;
   firstYearOfPlay: string;
   id: number;

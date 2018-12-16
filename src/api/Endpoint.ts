@@ -22,9 +22,9 @@ abstract class Endpoint {
     return Promise.reject(`Cannot load data from an invalid endpoint ${this.uri}`);
   }
   /**
-   * @description This method will parse the raw NHL API data in to an array of Player objects.
+   * @description This method will parse the raw NHL API data in to an array of T objects.
    * @param {object} apiData The raw NHL API data
-   * @returns {Player[]}
+   * @returns {T[]}
    */
   public async parseData<T>(apiData: any, path: string, transformer: (data: any) => Promise<T>): Promise<Array<T>> {
     const desiredData = get(apiData, path);
