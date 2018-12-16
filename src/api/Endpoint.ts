@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { get } from 'lodash';
 import validator from 'validator';
 
 /**
@@ -18,6 +19,18 @@ abstract class Endpoint {
       return apiResponse.data;
     }
     return Promise.reject(`Cannot load data from an invalid endpoint ${this.uri}`);
+  }
+  /**
+   * @description This method will parse the raw NHL API data in to an array of T objects.
+   * @param {object} apiData The raw NHL API data
+   * @returns {T[]}
+   */
+  public async parseData<T>(apiData: any, path: string, transformer: (data: any) => Promise<T>): Promise<Array<T>> {
+    const desiredData = get(apiData, path);
+    if (!desiredData || !Array.isArray(desiredData)) {
+      return Promise.reject('Unable to parse, missing data');
+    }
+    return Promise.all<T>(desiredData.map((data: any) => transformer(data)));
   }
   /**
    *

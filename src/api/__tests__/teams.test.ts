@@ -1,4 +1,5 @@
 import Teams from '../Teams';
+import { Team } from '../types';
 
 describe('Api', () => {
   describe('Teams', () => {
@@ -237,10 +238,97 @@ describe('Api', () => {
       });
     });
     describe('parseData', () => {
-      describe('when no data is passed', () => {
+      describe('when data IS NOT passed', () => {
         it('handles the error', () => {
-          const team = new Teams(1).parseData(null);
-          expect(team).not.toBeNull();
+          const player = new Teams(1);
+          expect(
+            player.parseData<Team>(null, 'teams', (apiDataItem) =>
+              Teams.toTeam(apiDataItem, false, false, false, false),
+            ),
+          ).rejects.toBe('Unable to parse, missing data');
+        });
+      });
+      describe('when data IS passed', () => {
+        it('returns an array of Team objects', () => {
+          const player = new Teams(1);
+          const mockApiData = {
+            copyright:
+              'NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2018. All Rights Reserved.',
+            teams: [
+              {
+                id: 1,
+                name: 'New Jersey Devils',
+                link: '/api/v1/teams/1',
+                venue: {
+                  name: 'Prudential Center',
+                  link: '/api/v1/venues/null',
+                  city: 'Newark',
+                  timeZone: {
+                    id: 'America/New_York',
+                    offset: -5,
+                    tz: 'EST',
+                  },
+                },
+                abbreviation: 'NJD',
+                teamName: 'Devils',
+                locationName: 'New Jersey',
+                firstYearOfPlay: '1982',
+                division: {
+                  id: 18,
+                  name: 'Metropolitan',
+                  nameShort: 'Metro',
+                  link: '/api/v1/divisions/18',
+                  abbreviation: 'M',
+                },
+                conference: {
+                  id: 6,
+                  name: 'Eastern',
+                  link: '/api/v1/conferences/6',
+                },
+                franchise: {
+                  franchiseId: 23,
+                  teamName: 'Devils',
+                  link: '/api/v1/franchises/23',
+                },
+                shortName: 'New Jersey',
+                officialSiteUrl: 'http://www.newjerseydevils.com/',
+                franchiseId: 23,
+                active: true,
+              },
+            ],
+          };
+
+          const expectedOutput: Array<Team> = [
+            {
+              abbreviation: 'Devils',
+              active: true,
+              firstYearOfPlay: '1982',
+              id: 1,
+              locationName: 'New Jersey',
+              name: 'New Jersey Devils',
+              shortName: 'Devils',
+              siteUrl: 'http://www.newjerseydevils.com/',
+              teamName: 'Devils',
+              division: {
+                id: 18,
+                name: 'Metropolitan',
+                shortName: 'Metro',
+                abbreviation: 'M',
+                active: true,
+              },
+              venue: {
+                city: 'Newark',
+                name: 'Prudential Center',
+                timeZoneAbbreviation: 'EST',
+                timeZoneName: 'America/New_York',
+                utcOffset: -5,
+              },
+            },
+          ];
+
+          expect(
+            player.parseData<Team>(mockApiData, 'teams', (team) => Teams.toTeam(team, false, false, false, false)),
+          ).resolves.toEqual(expectedOutput);
         });
       });
     });

@@ -32,10 +32,9 @@ class Teams extends Endpoint {
    * @returns {Division}
    */
   public static toDivision(apiData: any): Division {
-    // TODO: Change conference to optional and fetch conference from endpoint if withConference.
     return {
       abbreviation: apiData.abbreviation,
-      active: apiData.active,
+      active: true,
       id: apiData.id,
       name: apiData.name,
       shortName: apiData.shortName,
@@ -74,7 +73,6 @@ class Teams extends Endpoint {
     const team: Team = {
       abbreviation: apiData.abbreviation,
       active: apiData.active,
-      conference: Teams.toConference(apiData.conference),
       division: Teams.toDivision(apiData.division),
       firstYearOfPlay: apiData.firstYearOfPlay,
       id: apiData.id,
@@ -127,7 +125,9 @@ class Teams extends Endpoint {
   public async data(): Promise<Array<Team>> {
     try {
       const apiData = await this.load();
-      return this.parseData(apiData);
+      return this.parseData<Team>(apiData, 'teams', (team) =>
+        Teams.toTeam(team, this.roster, this.previousGame, this.nextGame, this.stats),
+      );
     } catch (error) {
       return Promise.reject(error);
     }
@@ -191,20 +191,6 @@ class Teams extends Endpoint {
       .withStats()
       .withPreviousGame()
       .withNextGame();
-  }
-  /**
-   * @description This method will parse the raw NHL API data in to an array of Team objects.
-   * @param {object} apiData The raw NHL API data
-   * @returns {Team[]}
-   */
-  public async parseData(apiData: any): Promise<Array<Team>> {
-    const teams = idx(apiData, (_) => _.teams);
-    if (!teams || !Array.isArray(teams)) {
-      return Promise.reject('Unable to parse, missing data');
-    }
-    return Promise.all<Team>(
-      teams.map((team: any) => Teams.toTeam(team, this.roster, this.previousGame, this.nextGame, this.stats)),
-    );
   }
 }
 

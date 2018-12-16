@@ -16,14 +16,15 @@ Internal API (developer) Documentation
   - [Conferences ⇐ <code>Endpoint</code>](#conferences-%E2%87%90-codeendpointcode)
     - [new Conferences()](#new-conferences)
     - [conferences.data() ⇒ <code>Array.&lt;Conference&gt;</code>](#conferencesdata-%E2%87%92-codearrayltconferencegtcode)
-    - [conferences.parseData(apiData) ⇒ <code>Array.&lt;Conference&gt;</code>](#conferencesparsedataapidata-%E2%87%92-codearrayltconferencegtcode)
+    - [conferences.parseData(apiData) ⇒ <code>Array.&lt;T&gt;</code>](#conferencesparsedataapidata-%E2%87%92-codearraylttgtcode)
     - [Conferences.toConference(apiData) ⇒ <code>Conference</code>](#conferencestoconferenceapidata-%E2%87%92-codeconferencecode)
   - [*Endpoint*](#endpoint)
     - [*new Endpoint()*](#new-endpoint)
+    - [*endpoint.parseData(apiData) ⇒ <code>Array.&lt;T&gt;</code>*](#endpointparsedataapidata-%E2%87%92-codearraylttgtcode)
   - [People ⇐ <code>Endpoint</code>](#people-%E2%87%90-codeendpointcode)
     - [new People()](#new-people)
     - [people.data() ⇒ <code>Array.&lt;Player&gt;</code>](#peopledata-%E2%87%92-codearrayltplayergtcode)
-    - [people.parseData(apiData) ⇒ <code>Array.&lt;Player&gt;</code>](#peopleparsedataapidata-%E2%87%92-codearrayltplayergtcode)
+    - [people.parseData(apiData) ⇒ <code>Array.&lt;T&gt;</code>](#peopleparsedataapidata-%E2%87%92-codearraylttgtcode)
     - [People.toPlayer(apiData) ⇒ <code>Player</code>](#peopletoplayerapidata-%E2%87%92-codeplayercode)
   - [Teams ⇐ <code>Endpoint</code>](#teams-%E2%87%90-codeendpointcode)
     - [new Teams(...ids)](#new-teamsids)
@@ -33,7 +34,7 @@ Internal API (developer) Documentation
     - [teams.withNextGame() ⇒ <code>Teams</code>](#teamswithnextgame-%E2%87%92-codeteamscode)
     - [teams.withStats() ⇒ <code>Teams</code>](#teamswithstats-%E2%87%92-codeteamscode)
     - [teams.all() ⇒ <code>Teams</code>](#teamsall-%E2%87%92-codeteamscode)
-    - [teams.parseData(apiData) ⇒ <code>Array.&lt;Team&gt;</code>](#teamsparsedataapidata-%E2%87%92-codearrayltteamgtcode)
+    - [teams.parseData(apiData) ⇒ <code>Array.&lt;T&gt;</code>](#teamsparsedataapidata-%E2%87%92-codearraylttgtcode)
     - [Teams.toConference(apiData) ⇒ <code>Conference</code>](#teamstoconferenceapidata-%E2%87%92-codeconferencecode)
     - [Teams.toDivision(apiData) ⇒ <code>Division</code>](#teamstodivisionapidata-%E2%87%92-codedivisioncode)
     - [Teams.toVenue(apiData) ⇒ <code>Venue</code>](#teamstovenueapidata-%E2%87%92-codevenuecode)
@@ -213,7 +214,7 @@ Composes BASE_ENDPOINT with the target path to create a valid endpoint(base, pat
     * [new Conferences()](#new_Conferences_new)
     * _instance_
         * [.data()](#Conferences+data) ⇒ [<code>Array.&lt;Conference&gt;</code>](#Conference)
-        * [.parseData(apiData)](#Conferences+parseData) ⇒ [<code>Array.&lt;Conference&gt;</code>](#Conference)
+        * [.parseData(apiData)](#Endpoint+parseData) ⇒ <code>Array.&lt;T&gt;</code>
     * _static_
         * [.toConference(apiData)](#Conferences.toConference) ⇒ [<code>Conference</code>](#Conference)
 
@@ -228,10 +229,10 @@ Composes BASE_ENDPOINT with the target path to create a valid endpoint(base, pat
 <p>This method is used after building of the URI is complete. It will fetch and parse the NHL API data.</p>
 
 **Kind**: instance method of [<code>Conferences</code>](#Conferences)  
-<a name="Conferences+parseData"></a>
+<a name="Endpoint+parseData"></a>
 
-### conferences.parseData(apiData) ⇒ [<code>Array.&lt;Conference&gt;</code>](#Conference)
-<p>This method will parse the raw NHL API data in to an array of Conference objects.</p>
+### conferences.parseData(apiData) ⇒ <code>Array.&lt;T&gt;</code>
+<p>This method will parse the raw NHL API data in to an array of T objects.</p>
 
 **Kind**: instance method of [<code>Conferences</code>](#Conferences)  
 
@@ -254,11 +255,27 @@ Composes BASE_ENDPOINT with the target path to create a valid endpoint(base, pat
 
 ## *Endpoint*
 **Kind**: global abstract class  
+
+* *[Endpoint](#Endpoint)*
+    * *[new Endpoint()](#new_Endpoint_new)*
+    * *[.parseData(apiData)](#Endpoint+parseData) ⇒ <code>Array.&lt;T&gt;</code>*
+
 <a name="new_Endpoint_new"></a>
 
 ### *new Endpoint()*
 <p>The Endpoint abstract class<br />
 All endpoints, for example {Teams} extend Endpoint</p>
+
+<a name="Endpoint+parseData"></a>
+
+### *endpoint.parseData(apiData) ⇒ <code>Array.&lt;T&gt;</code>*
+<p>This method will parse the raw NHL API data in to an array of T objects.</p>
+
+**Kind**: instance method of [<code>Endpoint</code>](#Endpoint)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| apiData | <code>object</code> | <p>The raw NHL API data</p> |
 
 <a name="People"></a>
 
@@ -272,7 +289,7 @@ All endpoints, for example {Teams} extend Endpoint</p>
     * [new People()](#new_People_new)
     * _instance_
         * [.data()](#People+data) ⇒ [<code>Array.&lt;Player&gt;</code>](#Player)
-        * [.parseData(apiData)](#People+parseData) ⇒ [<code>Array.&lt;Player&gt;</code>](#Player)
+        * [.parseData(apiData)](#Endpoint+parseData) ⇒ <code>Array.&lt;T&gt;</code>
     * _static_
         * [.toPlayer(apiData)](#People.toPlayer) ⇒ [<code>Player</code>](#Player)
 
@@ -287,10 +304,10 @@ All endpoints, for example {Teams} extend Endpoint</p>
 <p>This method is used after building of the URI is complete. It will fetch and parse the NHL API data.</p>
 
 **Kind**: instance method of [<code>People</code>](#People)  
-<a name="People+parseData"></a>
+<a name="Endpoint+parseData"></a>
 
-### people.parseData(apiData) ⇒ [<code>Array.&lt;Player&gt;</code>](#Player)
-<p>This method will parse the raw NHL API data in to an array of Player objects.</p>
+### people.parseData(apiData) ⇒ <code>Array.&lt;T&gt;</code>
+<p>This method will parse the raw NHL API data in to an array of T objects.</p>
 
 **Kind**: instance method of [<code>People</code>](#People)  
 
@@ -326,7 +343,7 @@ All endpoints, for example {Teams} extend Endpoint</p>
         * [.withNextGame()](#Teams+withNextGame) ⇒ [<code>Teams</code>](#Teams)
         * [.withStats()](#Teams+withStats) ⇒ [<code>Teams</code>](#Teams)
         * [.all()](#Teams+all) ⇒ [<code>Teams</code>](#Teams)
-        * [.parseData(apiData)](#Teams+parseData) ⇒ [<code>Array.&lt;Team&gt;</code>](#Team)
+        * [.parseData(apiData)](#Endpoint+parseData) ⇒ <code>Array.&lt;T&gt;</code>
     * _static_
         * [.toConference(apiData)](#Teams.toConference) ⇒ [<code>Conference</code>](#Conference)
         * [.toDivision(apiData)](#Teams.toDivision) ⇒ [<code>Division</code>](#Division)
@@ -384,10 +401,10 @@ statistical data.</p>
 <p>This method will add all possible query strings to the URI.</p>
 
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
-<a name="Teams+parseData"></a>
+<a name="Endpoint+parseData"></a>
 
-### teams.parseData(apiData) ⇒ [<code>Array.&lt;Team&gt;</code>](#Team)
-<p>This method will parse the raw NHL API data in to an array of Team objects.</p>
+### teams.parseData(apiData) ⇒ <code>Array.&lt;T&gt;</code>
+<p>This method will parse the raw NHL API data in to an array of T objects.</p>
 
 **Kind**: instance method of [<code>Teams</code>](#Teams)  
 
