@@ -1,5 +1,3 @@
-import idx from 'idx';
-
 import { CONFERENCES_ENDPOINT } from '../../endpoints';
 import { Conference } from '../types';
 

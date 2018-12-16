@@ -1,5 +1,3 @@
-import idx from 'idx';
-
 import { PEOPLE_ENDPOINT } from '../../endpoints';
 import { Player } from '../types';
 

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import idx from 'idx';
 import { get } from 'lodash';
 import validator from 'validator';
 
