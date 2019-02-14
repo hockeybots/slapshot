@@ -1,7 +1,4 @@
-import Conference from './Conference';
-import Division from './Division';
-import Player from './Player';
-import Venue from './Venue';
+import { Conference, Division, Game, Player, Venue } from '.';
 
 /**
  * @typedef {object} Team
@@ -29,6 +26,8 @@ interface Team {
   id: number;
   locationName: string;
   name: string;
+  nextGame?: Game;
+  previousGame?: Game;
   roster?: Array<Player>;
   shortName: string;
   siteUrl: string;

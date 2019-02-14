@@ -20,6 +20,7 @@ abstract class Endpoint {
     }
     return Promise.reject(`Cannot load data from an invalid endpoint ${this.uri}`);
   }
+  public appendToUri = (path: string) => `${this.uri}/${path}`;
   /**
    * @description This method will parse the raw NHL API data in to an array of T objects.
    * @param {object} apiData The raw NHL API data
