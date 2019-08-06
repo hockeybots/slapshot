@@ -9,7 +9,7 @@ Object {
     "active": true,
     "id": 5,
     "name": "Gummy Bears",
-    "shortName": "Gummy",
+    "nameShort": "Gummy",
   },
   "firstYearOfPlay": 1999,
   "id": 80085,

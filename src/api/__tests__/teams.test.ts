@@ -153,7 +153,7 @@ describe('Api', () => {
         active: true,
         id: 5,
         name: 'Gummy Bears',
-        shortName: 'Gummy',
+        nameShort: 'Gummy',
       };
       it('should return a division object with the correct abbreviation', () => {
         expect(Teams.toDivision(mockApiData).abbreviation).toBe(mockApiData.abbreviation);
@@ -168,7 +168,7 @@ describe('Api', () => {
         expect(Teams.toDivision(mockApiData).name).toBe(mockApiData.name);
       });
       it('should return a division object with the correct short name', () => {
-        expect(Teams.toDivision(mockApiData).shortName).toBe(mockApiData.shortName);
+        expect(Teams.toDivision(mockApiData).nameShort).toBe(mockApiData.nameShort);
       });
     });
     describe('toVenue', () => {
@@ -213,7 +213,7 @@ describe('Api', () => {
           active: true,
           id: 5,
           name: 'Gummy Bears',
-          shortName: 'Gummy',
+          nameShort: 'Gummy',
         },
         conference: {
           abbreviation: 'WW',
@@ -300,19 +300,19 @@ describe('Api', () => {
 
           const expectedOutput: Array<Team> = [
             {
-              abbreviation: 'Devils',
+              abbreviation: 'NJD',
               active: true,
               firstYearOfPlay: '1982',
               id: 1,
               locationName: 'New Jersey',
               name: 'New Jersey Devils',
-              shortName: 'Devils',
+              shortName: 'New Jersey',
               siteUrl: 'http://www.newjerseydevils.com/',
               teamName: 'Devils',
               division: {
                 id: 18,
                 name: 'Metropolitan',
-                shortName: 'Metro',
+                nameShort: 'Metro',
                 abbreviation: 'M',
                 active: true,
               },
