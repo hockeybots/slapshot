@@ -7,7 +7,7 @@ import Team from './Team';
  * @property {boolean} active - Whether the division is active or not.
  * @property {id} id - The ID of the division as returned by the NHL API.
  * @property {string} name - The name of the division.
- * @property {shortName} shortName - The short name of the divison. (EG: ATL for Atrlanic).
+ * @property {nameShort} nameShort - The short name of the divison. (EG: ATL for Atrlanic).
  * @description - A representation of an NHL Division.
  */
 interface Division {
@@ -15,7 +15,7 @@ interface Division {
   active: boolean;
   id: number;
   name: string;
-  shortName: string;
+  nameShort: string;
 }
 
 export default Division;

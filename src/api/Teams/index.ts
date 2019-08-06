@@ -37,7 +37,7 @@ class Teams extends Endpoint {
       active: true,
       id: apiData.id,
       name: apiData.name,
-      shortName: apiData.shortName,
+      nameShort: apiData.nameShort,
     };
   }
   /**
